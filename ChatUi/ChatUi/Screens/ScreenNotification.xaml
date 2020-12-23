@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ChatUi.Screens.ScreenNotification"
+             xmlns:Custom_Controls="clr-namespace:ChatUi.Custom_Controls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatUi.Screens"
+        mc:Ignorable="d" Height="Auto" Width="Auto">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" Margin="10">
+            <Border Grid.Row="0" Margin="10" BorderBrush="Snow" BorderThickness="0 0 0 2" >
+                <TextBlock Text="Уведомления" HorizontalAlignment="Center" Foreground="WhiteSmoke" FontSize="28"/>
+            </Border>
+        </Grid>
+        <Custom_Controls:Notifications  Grid.Row="1" Visibility="Visible"/>
+    </Grid>
+</UserControl>

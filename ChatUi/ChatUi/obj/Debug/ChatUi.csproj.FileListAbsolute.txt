@@ -1,0 +1,143 @@
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\bin\Debug\ChatUi.exe.config
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\bin\Debug\ChatUi.exe
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\bin\Debug\ChatUi.pdb
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\bin\Debug\PresentationFramework.Aero2.dll
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\MainWindow.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\App.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.cache
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.lref
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\App.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\MainWindow.baml
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.g.resources
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.Properties.Resources.resources
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.GenerateResource.cache
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CoreCompileInputs.cache
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CopyComplete
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.exe
+C:\Users\Максим\Source\Repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.pdb
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriend.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriend.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenChat.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenChat.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendProfile.g.cs
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendProfile.baml
+C:\Users\Максим\source\repos\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csprojAssemblyReference.cache
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\ChatUi.exe.config
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\ChatUi.exe
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\ChatUi.pdb
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\PresentationFramework.Aero2.dll
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csprojAssemblyReference.cache
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\MainWindow.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenChat.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriend.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendProfile.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\App.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.cache
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.lref
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\App.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\MainWindow.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenChat.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriend.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendProfile.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.baml
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.g.resources
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.Properties.Resources.resources
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.GenerateResource.cache
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CoreCompileInputs.cache
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CopyComplete
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.exe
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\obj\Debug\ChatUi.pdb
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\ClientToServerApi.dll
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\ClientToServerApi.pdb
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Максим\Desktop\ChatUI\ChatUi\ChatUi\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ChatUi.exe.config
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ChatUi.exe
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ChatUi.pdb
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ClientToServerApi.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\PresentationFramework.Aero2.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ClientToServerApi.pdb
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csprojAssemblyReference.cache
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\MainWindow.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenChat.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriend.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendProfile.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\App.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.cache
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.lref
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\App.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\MainWindow.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenChat.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriend.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendProfile.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.g.resources
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.Properties.Resources.resources
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.GenerateResource.cache
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CoreCompileInputs.cache
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CopyComplete
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.exe
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.pdb

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "FlAjQ65Y+1whWVhE6G2oBQ2o9pBlMhonJ/Rsazw6vpdef/Jn01082oO8J9zsH2cRFdaq7eM8xPFBnUQxJvJN6g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Максим\\Desktop\\Chat\\ChatUi\\ClientToServerApi\\ClientToServerApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Максим\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Максим\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Максим\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

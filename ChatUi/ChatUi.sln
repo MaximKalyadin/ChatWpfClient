@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatUi", "ChatUi\ChatUi.csproj", "{143C18E4-3C76-4B57-A03A-874523F2E9AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientToServerApi", "ClientToServerApi\ClientToServerApi.csproj", "{C4598F45-485B-4BF1-B320-84D722934EEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{143C18E4-3C76-4B57-A03A-874523F2E9AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143C18E4-3C76-4B57-A03A-874523F2E9AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143C18E4-3C76-4B57-A03A-874523F2E9AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143C18E4-3C76-4B57-A03A-874523F2E9AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4598F45-485B-4BF1-B320-84D722934EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4598F45-485B-4BF1-B320-84D722934EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4598F45-485B-4BF1-B320-84D722934EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4598F45-485B-4BF1-B320-84D722934EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3D2FC01-DF66-4AA4-AAE5-D8A2C1324B0C}
+	EndGlobalSection
+EndGlobal
