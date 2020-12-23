@@ -9,7 +9,8 @@ using System.Windows;
 namespace ChatUi
 {
     public class ViewModel
-    {
+    { 
+        //Не трогать!!! Это меню!
         public List<MenuItems> ItemList
         {
             get
@@ -41,16 +42,6 @@ namespace ChatUi
             {
                 return new List<NotificationListItem>
                 {
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
-                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
                     new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" }
                 };
             }
@@ -79,7 +70,7 @@ namespace ChatUi
                 return new List<ConversationMessages>
                 {
                     new ConversationMessages() { Message="Привет",MessageStatus ="Received", TimeStamp="Yesterday 14:26 PM" },
-                    new ConversationMessages() { Message="Привет как дела?", MessageStatus="Sent", TimeStamp="Yesterday 14:38 PM"},
+                    new ConversationMessages() { Message="Привет, как дела?", MessageStatus="Sent", TimeStamp="Yesterday 14:38 PM"},
                     new ConversationMessages() { Message="Что делаешь?", MessageStatus="Sent", TimeStamp="Today 06:18 AM"}
                 };
             }

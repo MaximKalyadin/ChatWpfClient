@@ -57,14 +57,21 @@ namespace ClientToServerApi
 
         private NetworkStream Connect(string ServerIp, string ServerPort)
         {
-            tcpClient_.ConnectAsync(IPAddress.Parse(ServerIp), Convert.ToInt32(ServerPort)).Wait();
-            if (tcpClient_.Connected)
+            try
             {
-                receiveThread_ = new Thread(ReceiveData);
-                receiveThread_.Start();
-                return tcpClient_.GetStream();
+                tcpClient_.ConnectAsync(IPAddress.Parse(ServerIp), Convert.ToInt32(ServerPort)).Wait();
+                if (tcpClient_.Connected)
+                {
+                    receiveThread_ = new Thread(ReceiveData);
+                    receiveThread_.Start();
+                    return tcpClient_.GetStream();
+                }
             }
-            MessageBox.Show("Не удалось установить соединение с сервером!");
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось установить соединение с сервером!");
+            }
+
             throw new Exception("Не удалось установить соединение с сервером!");
         }
 
@@ -78,7 +85,7 @@ namespace ClientToServerApi
             catch(Exception)
             {
                 MessageBox.Show("Не удалось отправить запрос на сервер");
-                throw;
+                throw new Exception("Не удалось отправить запрос на сервер");
             }
         }
 
@@ -104,7 +111,8 @@ namespace ClientToServerApi
             }
             catch(Exception)
             {
-                throw;
+                MessageBox.Show("Не удалось получить данные с сервера!");
+                throw new Exception("Не удалось получить данные с сервера!");
             }
         }
     }

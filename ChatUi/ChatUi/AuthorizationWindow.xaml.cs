@@ -37,6 +37,8 @@ namespace ChatUi
                     var labelHint = ((emailTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
                     labelHint.Content = data.ErrorInfo;
                     labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
+                    var RegistrationButton = this.TabControl.Template.FindName("RegistrationNextButton", this.TabControl) as Button;
+                    RegistrationButton.IsEnabled = true;
                 }
                 else if (data.OperationsResult == OperationsResults.Successfuly)
                 {
@@ -57,6 +59,8 @@ namespace ChatUi
                     var labelHint = ((loginTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
                     labelHint.Content = data.ErrorInfo;
                     labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
+                    var ButtonEnter = this.TabControl.Template.FindName("EnterButton", this.TabControl) as Button;
+                    ButtonEnter.IsEnabled = true;
                 }
                 else if (data.OperationsResult == OperationsResults.Successfuly)
                 {
@@ -78,6 +82,8 @@ namespace ChatUi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var ButtonEnter = this.TabControl.Template.FindName("EnterButton", this.TabControl) as Button;
+            ButtonEnter.IsEnabled = false;
             var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
             var passwordBox = this.TabControl.Template.FindName("PasswordBox", this.TabControl) as PasswordBox;
             if (string.IsNullOrEmpty(loginTextBox.Text))
@@ -119,7 +125,8 @@ namespace ChatUi
             var passwordConfirmRegistrationBox = this.TabControl.Template.FindName("PasswordConfirmRegistrationBox", this.TabControl) as PasswordBox;
             var nameTextBox = this.TabControl.Template.FindName("NameTextBox", this.TabControl) as TextBox;
             var secondNameTextBox = this.TabControl.Template.FindName("SecondNameTextBox", this.TabControl) as TextBox;
-
+            var RegistrationButton = this.TabControl.Template.FindName("RegistrationNextButton", this.TabControl) as Button;
+            RegistrationButton.IsEnabled = false;
             if (string.IsNullOrEmpty(emailTextBox.Text))
             {
                 SetNotFillFieldInfo(emailTextBox.Style);
