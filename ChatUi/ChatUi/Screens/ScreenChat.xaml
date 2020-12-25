@@ -336,8 +336,8 @@
 
                 <TextBlock Text="Sort By:" FontSize="14" FontWeight="SemiBold" Foreground="White"
                            HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <ComboBox Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}">
-                    <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Latest First"/>
+                <ComboBox Grid.Column="1">
+                    <ComboBoxItem Background="Transparent"  BorderThickness="0" Content="Latest First"/>
                 </ComboBox>
 
                 <Grid Grid.Column="2">
@@ -363,7 +363,7 @@
         <local:ScreenMyProfile x:Name="MyProfile" Grid.Column="0" Grid.RowSpan="2" Visibility="Collapsed"/>
 
 
-        <Border x:Name="BorderSendMassege" Grid.Column="1" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8" Visibility="Collapsed">
+        <Border x:Name="BorderSendMassege" Grid.Column="1" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8" Visibility="Visible">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>

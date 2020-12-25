@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using ClientToServerApi.Models.ReceivedModels.UserModel;
 
 namespace ChatUi
 {
@@ -20,6 +21,7 @@ namespace ChatUi
         static Serializer serializer = new Serializer();
         public AuthorizationWindow()
         {
+            
             InitializeComponent();
             clientServerService_ = ClientServerService.GetInstanse();
             clientServerService_.AddListener(ListenerType.RegistrationListener, RegistrationListener);
@@ -40,7 +42,7 @@ namespace ChatUi
                     var RegistrationButton = this.TabControl.Template.FindName("RegistrationNextButton", this.TabControl) as Button;
                     RegistrationButton.IsEnabled = true;
                 }
-                else if (data.OperationsResult == OperationsResults.Successfuly)
+                else if (data.OperationsResult == OperationsResults.Successfully)
                 {
                     if (this.TabControl.Template.FindName("ConfirmRegistrationTabItem", this.TabControl) is TabItem tabItem)
                         tabItem.IsSelected = true;
@@ -62,9 +64,10 @@ namespace ChatUi
                     var ButtonEnter = this.TabControl.Template.FindName("EnterButton", this.TabControl) as Button;
                     ButtonEnter.IsEnabled = true;
                 }
-                else if (data.OperationsResult == OperationsResults.Successfuly)
+                else if (data.OperationsResult == OperationsResults.Successfully)
                 {
-                    MainWindow mainWindow = new MainWindow();
+                    MainWindow mainWindow = new MainWindow(serializer.Deserialize<UserReceiveModel>(data.JsonData as string));
+                   // mainWindow.userReceiveModel = serializer.Deserialize<UserReceiveModel>(data.JsonData as string);
                     mainWindow.Show();
                     Close();
                 }

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ChatUi"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
-        Title="MainWindow" Height="800" Width="1400" BorderBrush="Red" BorderThickness="2" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="MainWindow" Height="800" Width="1400" BorderBrush="Red" BorderThickness="2" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True" >
     <Window.Background>
         <ImageBrush ImageSource="assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -422,8 +422,8 @@
     </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="95"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="95" x:Name="MenuList"/>
+            <ColumnDefinition Width="*" x:Name="RightRegion"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
@@ -437,7 +437,7 @@
 
         <Screens:ScreenFriend x:Name="Friend" Grid.Column="1" Visibility="Collapsed"/>
         <Screens:ScreenChat x:Name="Chat" Grid.Column="1" Visibility="Collapsed"/>
-        <Screens:ScreenSettings x:Name="Settings" Grid.Column="1" Visibility="Collapsed"/>
+        <Screens:ScreenSettings x:Name="Settings" Grid.Column="1" Visibility="Collapsed" />
 
 
 

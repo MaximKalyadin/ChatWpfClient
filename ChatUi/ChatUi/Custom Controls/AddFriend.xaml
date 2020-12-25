@@ -112,5 +112,5 @@
             <Setter Property="ScrollViewer.Cursor" Value="Hand"/>
         </Style>
     </UserControl.Resources>
-    <ListBox Style="{StaticResource FriendListBoxStyle}" ItemsSource="{Binding FriendListItems}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
+    <ListBox x:Name="ListBoxFriend" Style="{StaticResource FriendListBoxStyle}" ItemsSource="{Binding FriendListItems}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>

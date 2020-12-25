@@ -774,9 +774,11 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                <Setter Property="Background" TargetName="border" Value="WhiteSmoke"/>
+                                <!--="{StaticResource Button.Disabled.Background}"/>-->
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                                <!--="{StaticResource Button.Disabled.Border}"/>-->
+                                <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>-->
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -935,9 +937,11 @@
                                 <Setter Property="Background" TargetName="border" Value="Transparent"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                <Setter Property="Background" TargetName="border" Value="WhiteSmoke"/>
+                                <!--="{StaticResource Button.Disabled.Background}"/>-->
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                                <!--="{StaticResource Button.Disabled.Border}"/>-->
+                                <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>-->
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -971,9 +975,11 @@
                                 <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                <Setter Property="Background" TargetName="border" Value="WhiteSmoke"/>
+                                <!--="{StaticResource Button.Disabled.Background}"/>-->
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                                <!--="{StaticResource Button.Disabled.Border}"/>-->
+                                <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>-->
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

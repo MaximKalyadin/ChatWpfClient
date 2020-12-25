@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClientToServerApi.Models.ReceivedModels.UserModel;
+using ClientToServerApi.Models.ResponseModels.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,12 +23,28 @@ namespace ChatUi
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool IsFitToWidth { set; get; } 
+        private bool IsFitToWidth { set; get; }
 
-        public MainWindow()
+        public UserReceiveModel userReceiveModel { get; set; }
+        public UserResponseModel UserResponseModel { get; set; }
+
+        public MainWindow(UserReceiveModel model)
         {
             InitializeComponent();
             IsFitToWidth = false;
+            UserResponseModel userResponseModel = new UserResponseModel();
+            userResponseModel.UserName = model.UserName;
+            userResponseModel.SecondName = model.SecondName;
+            userResponseModel.File = model.File;
+            userResponseModel.PhoneNumber = model.PhoneNumber;
+            userResponseModel.Name = model.Name;
+            userResponseModel.IsOnline = model.IsOnline;
+            userResponseModel.Id = model.Id;
+            userResponseModel.Country = model.Country;
+            userResponseModel.City = model.City;
+            userResponseModel.Gender = model.Gender;
+            userReceiveModel = model;
+            UserResponseModel = userResponseModel;
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)
@@ -65,7 +83,7 @@ namespace ChatUi
             Chat.Notification.Visibility = Visibility.Collapsed;
             Chat.MyProfile.Visibility = Visibility.Visible;
         }
-
+        
         public void Menu_ListBoxSelectedIndex(object sender, EventArgs e)
         {
             switch (Menu.SelectedIndex)
@@ -99,12 +117,21 @@ namespace ChatUi
                     break;
                 case 3:
                     Friend.Visibility = Visibility.Collapsed;
-                    Settings.Visibility = Visibility.Visible;
                     Chat.Visibility = Visibility.Collapsed;
                     Chat.StackPanelSearch.Visibility = Visibility.Collapsed;
                     Chat.ChatList.Visibility = Visibility.Collapsed;
                     Chat.Notification.Visibility = Visibility.Collapsed;
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
+
+                    Settings.Visibility = Visibility.Visible;
+                    Debug.WriteLine(userReceiveModel + " " + UserResponseModel);
+                    if (Settings.IsChange == false)
+                    {
+                        Settings._userReceiveModel = userReceiveModel;
+                        Settings._userResponseModel = UserResponseModel;
+                        Settings.LoadedInfoProfile(userReceiveModel);
+                    }
+
                     break;
             }
         }

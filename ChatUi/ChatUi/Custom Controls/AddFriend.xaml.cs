@@ -23,6 +23,33 @@ namespace ChatUi.Custom_Controls
         {
             InitializeComponent();
             DataContext = new ViewModel();
+            ListBoxFriend.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
+        }
+
+        public event EventHandler _eventListBox;
+
+        public int SelectedIndex
+        {
+            get
+            {
+                return ListBoxFriend.SelectedIndex;
+            }
+            set
+            {
+                ListBoxFriend.SelectedIndex = value;
+            }
+        }
+
+        public event EventHandler ListBoxSelectionChange
+        {
+            add
+            {
+                _eventListBox += value;
+            }
+            remove
+            {
+                _eventListBox -= value;
+            }
         }
     }
 }

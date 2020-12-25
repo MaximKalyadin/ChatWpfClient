@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientToServerApi.Models.ReceivedModels.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -9,7 +10,7 @@ using System.Windows;
 namespace ChatUi
 {
     public class ViewModel
-    { 
+    {
         //Не трогать!!! Это меню!
         public List<MenuItems> ItemList
         {
@@ -31,6 +32,7 @@ namespace ChatUi
             {
                 return new List<FriendListItem>
                 {
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
                     new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false}
                 };
             }
@@ -77,7 +79,7 @@ namespace ChatUi
         }
 
     }
-
+    //Это меню!
     public class MenuItems
     {
         public string PathData { get; set; }
