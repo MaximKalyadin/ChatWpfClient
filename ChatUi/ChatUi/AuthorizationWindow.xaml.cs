@@ -67,7 +67,6 @@ namespace ChatUi
                 else if (data.OperationsResult == OperationsResults.Successfully)
                 {
                     MainWindow mainWindow = new MainWindow(serializer.Deserialize<UserReceiveModel>(data.JsonData as string));
-                   // mainWindow.userReceiveModel = serializer.Deserialize<UserReceiveModel>(data.JsonData as string);
                     mainWindow.Show();
                     Close();
                 }

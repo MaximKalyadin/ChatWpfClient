@@ -136,10 +136,10 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Пол: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
-                        <ComboBox x:Name="ComboBoxGender" Grid.Column="1"  BorderThickness="1.2" Width="220" Margin="0 5 0 0">
-                            <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Male"/>
+                        <ComboBox x:Name="ComboBoxGender" Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}"  BorderThickness="1.2" Width="220" Margin="0 5 0 0">
+                            <!--<ComboBoxItem Background="Transparent" BorderThickness="0" Content="Male"/>
                             <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Female"/>
-                            <ComboBoxItem Background="Transparent" BorderThickness="0" Content="CombatHelicopter"/>
+                            <ComboBoxItem Background="Transparent" BorderThickness="0" Content="CombatHelicopter"/>-->
                         </ComboBox>
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
@@ -149,9 +149,13 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Страна: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
-                        <TextBox x:Name="CuntryTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
+                        <!--<TextBox x:Name="CuntryTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                     TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
+                                     TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />-->
+                        <ComboBox x:Name="ComboBoxCountry" Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}"  BorderThickness="1.2" Width="220" Margin="0 5 0 0">
+                            <!--<ComboBoxItem Background="Transparent" BorderThickness="0" Content="Russia"/>
+                            <ComboBoxItem Background="Transparent" BorderThickness="0" Content="USA"/>-->
+                        </ComboBox>
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                     <Grid>
@@ -160,9 +164,13 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Город: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
-                        <TextBox x:Name="TownTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
+                        <!--<TextBox x:Name="TownTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                     TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
+                                     TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />-->
+                        <ComboBox x:Name="ComboBoxCity" Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}"  BorderThickness="1.2" Width="220" Margin="0 5 0 0">
+                           <!-- <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Ulyanovsk"/>
+                            <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Kazan"/>-->
+                        </ComboBox>
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                 </StackPanel>

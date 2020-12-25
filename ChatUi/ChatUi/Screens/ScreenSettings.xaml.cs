@@ -36,6 +36,32 @@ namespace ChatUi.Screens
             InitializeComponent();
             clientServerService_ = ClientServerService.GetInstanse();
             clientServerService_.AddListener(ListenerType.UserInfoListener, UpdateProfile);
+
+            foreach(var el in Enum.GetValues(typeof(Gender)))
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = el;
+                item.Background = Brushes.Transparent;
+                item.BorderThickness = new Thickness(0);
+                ComboBoxGender.Items.Add(item);
+            }
+            foreach (var el in Enum.GetValues(typeof(Country)))
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = el;
+                item.Background = Brushes.Transparent;
+                item.BorderThickness = new Thickness(0);
+                ComboBoxCountry.Items.Add(item);
+            }
+            foreach (var el in Enum.GetValues(typeof(City)))
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = el;
+                item.Background = Brushes.Transparent;
+                item.BorderThickness = new Thickness(0);
+                ComboBoxCity.Items.Add(item);
+            }
+
         }
 
         private void UpdateProfile(OperationResultInfo data)
@@ -95,7 +121,7 @@ namespace ChatUi.Screens
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("<><><><><><><><> " + _userReceiveModel + " " + _userResponseModel);
+            //Debug.WriteLine("<><><><><><><><> " + _userReceiveModel + " " + _userResponseModel);
             if (!string.IsNullOrEmpty(NameTextBox.Text))
             {
                 _userReceiveModel.Name = NameTextBox.Text;
@@ -111,15 +137,15 @@ namespace ChatUi.Screens
                 _userReceiveModel.Gender = (Gender)Enum.Parse(typeof(Gender), ComboBoxGender.Text);
                 _userResponseModel.Gender = (Gender)Enum.Parse(typeof(Gender), ComboBoxGender.Text);
             }
-            if (!string.IsNullOrEmpty(CuntryTextBox.Text))
+            if (!string.IsNullOrEmpty(ComboBoxCountry.Text))
             {
-                _userReceiveModel.Country = (Country)Enum.Parse(typeof(Country), CuntryTextBox.Text);
-                _userResponseModel.Country = (Country)Enum.Parse(typeof(Country), CuntryTextBox.Text);
+                _userReceiveModel.Country = (Country)Enum.Parse(typeof(Country), ComboBoxCountry.Text);
+                _userResponseModel.Country = (Country)Enum.Parse(typeof(Country), ComboBoxCountry.Text);
             }
-            if (!string.IsNullOrEmpty(TownTextBox.Text))
+            if (!string.IsNullOrEmpty(ComboBoxCity.Text))
             {
-                _userReceiveModel.City = (City)Enum.Parse(typeof(City), TownTextBox.Text);
-                _userResponseModel.City = (City)Enum.Parse(typeof(City), TownTextBox.Text);
+                _userReceiveModel.City = (City)Enum.Parse(typeof(City), ComboBoxCity.Text);
+                _userResponseModel.City = (City)Enum.Parse(typeof(City), ComboBoxCity.Text);
             }
             if (NewPasswordTextBox.Password.Equals(RepeatPasswordTextBox.Password) && !string.IsNullOrEmpty(OldPasswordTextBox.Password))
             {

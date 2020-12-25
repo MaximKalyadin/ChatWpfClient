@@ -336,7 +336,7 @@
 
                 <TextBlock Text="Sort By:" FontSize="14" FontWeight="SemiBold" Foreground="White"
                            HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <ComboBox Grid.Column="1">
+                <ComboBox Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}">
                     <ComboBoxItem Background="Transparent"  BorderThickness="0" Content="Latest First"/>
                 </ComboBox>
 

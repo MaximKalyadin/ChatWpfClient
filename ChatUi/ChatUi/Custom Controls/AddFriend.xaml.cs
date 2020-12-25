@@ -51,5 +51,7 @@ namespace ChatUi.Custom_Controls
                 _eventListBox -= value;
             }
         }
+
+
     }
 }

@@ -86,11 +86,18 @@
                                                 </Grid.RowDefinitions>
                                                 <TextBlock Text="{Binding ContactName}" FontWeight="Bold" FontSize="17"/>
                                                 <TextBlock Grid.Row="1" Text="{Binding Availability}" FontSize="15" Foreground="DimGray"/>
-                                                <Button Style="{StaticResource ButtonMore}">
+                                                <Button x:Name="ButtonMore" Style="{StaticResource ButtonMore}">
                                                     <Button.Content>
                                                         <Image Source="/assets/more.png"/>
                                                     </Button.Content>
                                                 </Button>
+                                                <Popup x:Name="PopupMore" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=ButtonMore}" PopupAnimation="Slide">
+                                                    <Border x:Name="PopupBorder" Background="WhiteSmoke" BorderThickness="1" CornerRadius="10" BorderBrush="Black" >
+                                                        <StackPanel Orientation="Vertical">
+                                                            
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Popup>
                                             </Grid>
                                         </Grid>
                                     </StackPanel>
