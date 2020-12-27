@@ -32,7 +32,7 @@ namespace ChatUi
         {
             this.Dispatcher.InvokeAsync(() =>
             {
-                if (data.OperationsResult == OperationsResults.Unsuccessfully)
+                if (data.OperationsResults == OperationsResults.Unsuccessfully)
                 {
                     var emailTextBox = this.TabControl.Template.FindName("EmailTextBox", this.TabControl) as TextBox;
                     emailTextBox.Text = string.Empty;
@@ -42,7 +42,7 @@ namespace ChatUi
                     var RegistrationButton = this.TabControl.Template.FindName("RegistrationNextButton", this.TabControl) as Button;
                     RegistrationButton.IsEnabled = true;
                 }
-                else if (data.OperationsResult == OperationsResults.Successfully)
+                else if (data.OperationsResults == OperationsResults.Successfully)
                 {
                     if (this.TabControl.Template.FindName("ConfirmRegistrationTabItem", this.TabControl) is TabItem tabItem)
                         tabItem.IsSelected = true;
@@ -54,8 +54,9 @@ namespace ChatUi
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                //UserReceiveModel userReceiveModel = new UserReceiveModel();
                 var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
-                if (data.OperationsResult == OperationsResults.Unsuccessfully)
+                if (data.OperationsResults == OperationsResults.Unsuccessfully)
                 {
                     loginTextBox.Text = string.Empty;
                     var labelHint = ((loginTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
@@ -64,11 +65,12 @@ namespace ChatUi
                     var ButtonEnter = this.TabControl.Template.FindName("EnterButton", this.TabControl) as Button;
                     ButtonEnter.IsEnabled = true;
                 }
-                else if (data.OperationsResult == OperationsResults.Successfully)
+                else if (data.OperationsResults == OperationsResults.Successfully)
                 {
                     MainWindow mainWindow = new MainWindow(serializer.Deserialize<UserReceiveModel>(data.JsonData as string));
                     mainWindow.Show();
                     Close();
+                    ///serializer.Deserialize<UserReceiveModel>(data.JsonData as string)
                 }
             });
         }

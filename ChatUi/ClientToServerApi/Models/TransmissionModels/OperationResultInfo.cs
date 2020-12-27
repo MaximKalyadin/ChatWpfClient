@@ -6,8 +6,8 @@ namespace ClientToServerApi.Models.TransmissionModels
 	{
 		public string ErrorInfo { get; set; }
 		public object JsonData { get; set; }
-		public OperationsResults OperationsResult { get; set; }
 		public ListenerType ToListener { get; set; }
+		public OperationsResults OperationsResults { get; set; }
 	}
 
 }

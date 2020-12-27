@@ -93,7 +93,7 @@ namespace ClientToServerApi
         {
             try
             {
-                byte[] buffer = new byte[256];
+                byte[] buffer = new byte[256*2];
                 
                 while (true)
                 {
@@ -104,9 +104,14 @@ namespace ClientToServerApi
                         stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, count));
                     } while (networkStream_.DataAvailable);
 
-                    var obj = serializer.Deserialize<OperationResultInfo>(stringBuilder.ToString());
-                    stringBuilder.Clear();
-                    dataManager_.HandleData(obj.ToListener, obj);
+                    try
+                    {
+                        var obj = serializer.Deserialize<OperationResultInfo>(stringBuilder.ToString());
+                        
+                        dataManager_.HandleData(obj.ToListener, obj);
+                        stringBuilder.Clear();
+                    }
+                    catch (Exception ex) { Debug.WriteLine(ex.Message); }
                 }
             }
             catch(Exception)

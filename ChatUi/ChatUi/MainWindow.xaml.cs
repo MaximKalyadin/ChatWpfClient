@@ -1,5 +1,8 @@
-﻿using ClientToServerApi.Models.ReceivedModels.UserModel;
+﻿using ClientToServerApi;
+using ClientToServerApi.Models.Enums.Transmissions;
+using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModels.UserModel;
+using ClientToServerApi.Models.TransmissionModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,10 +30,12 @@ namespace ChatUi
 
         public UserReceiveModel userReceiveModel { get; set; }
         public UserResponseModel UserResponseModel { get; set; }
-
+        public readonly ClientServerService clientServerService_;
+        static Serializer serializer = new Serializer();
         public MainWindow(UserReceiveModel model)
         {
             InitializeComponent();
+            clientServerService_ = ClientServerService.GetInstanse();
             IsFitToWidth = false;
             UserResponseModel userResponseModel = new UserResponseModel();
             userResponseModel.UserName = model.UserName;
@@ -71,6 +76,7 @@ namespace ChatUi
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             SystemCommands.CloseWindow(this);
+            
         }
 
         public void Mouse_Click(object sender, RoutedEventArgs e)
@@ -89,6 +95,7 @@ namespace ChatUi
             switch (Menu.SelectedIndex)
             {
                 case 0:
+                    //chat
                     Friend.Visibility = Visibility.Collapsed;
                     Settings.Visibility = Visibility.Collapsed;
                     Chat.Visibility = Visibility.Visible;
@@ -98,6 +105,7 @@ namespace ChatUi
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
                     break;
                 case 1:
+                    //friend
                     Friend.Visibility = Visibility.Visible;
                     Settings.Visibility = Visibility.Collapsed;
                     Chat.Visibility = Visibility.Collapsed;
@@ -105,8 +113,30 @@ namespace ChatUi
                     Chat.ChatList.Visibility = Visibility.Collapsed;
                     Chat.Notification.Visibility = Visibility.Collapsed;
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
+
+                    clientServerService_.SendAsync(new ClientOperationMessage()
+                    {
+                        Operation = ClientOperations.GetUsers,
+                        JsonData = serializer.Serialize(new UserPaginationResponseModel()
+                        {
+                            UserId = userReceiveModel.Id
+                        })
+                    });
+
+                    clientServerService_.SendAsync(new ClientOperationMessage()
+                    {
+                        Operation = ClientOperations.GetFriends,
+                        JsonData = serializer.Serialize(new UserPaginationResponseModel()
+                        {
+                            UserId = userReceiveModel.Id
+                        })
+                    });
+                    Friend.ViewFriend();
+
+
                     break;
                 case 2:
+                    //notification
                     Friend.Visibility = Visibility.Collapsed;
                     Settings.Visibility = Visibility.Collapsed;
                     Chat.Visibility = Visibility.Visible;
@@ -114,8 +144,18 @@ namespace ChatUi
                     Chat.ChatList.Visibility = Visibility.Collapsed;
                     Chat.Notification.Visibility = Visibility.Visible;
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
+
+                    clientServerService_.SendAsync(new ClientOperationMessage()
+                    {
+                        Operation = ClientOperations.GetNotifications,
+                        JsonData = serializer.Serialize(new UserPaginationResponseModel()
+                        {
+                            UserId = userReceiveModel.Id
+                        })
+                    });
                     break;
                 case 3:
+                    //settings
                     Friend.Visibility = Visibility.Collapsed;
                     Chat.Visibility = Visibility.Collapsed;
                     Chat.StackPanelSearch.Visibility = Visibility.Collapsed;
@@ -124,14 +164,12 @@ namespace ChatUi
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
 
                     Settings.Visibility = Visibility.Visible;
-                    Debug.WriteLine(userReceiveModel + " " + UserResponseModel);
                     if (Settings.IsChange == false)
                     {
                         Settings._userReceiveModel = userReceiveModel;
                         Settings._userResponseModel = UserResponseModel;
                         Settings.LoadedInfoProfile(userReceiveModel);
                     }
-
                     break;
             }
         }

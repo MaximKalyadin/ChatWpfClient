@@ -96,14 +96,13 @@
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <local:RoundProfileButton ProfileImageSource="{Binding ContactProfilePic}" IsOnline="{Binding IsOnline}" Grid.Column="0" Margin="10 10 0 0"/>
+                                            <local:RoundProfileButton Grid.Column="0" Margin="10 10 0 0"/>
                                             <StackPanel Grid.Column="1" Margin="10 10 0 0">
-                                                <TextBlock Text="{Binding ContactName}" FontWeight="Bold" FontSize="17"/>
-                                                <TextBlock Grid.Row="1" Text="{Binding Availability}" FontSize="15" Foreground="DimGray"/>
+                                                <TextBlock Text="{Binding FromUserName}" FontWeight="Bold" FontSize="17"/>
                                             </StackPanel>
                                         </Grid>
                                         <Grid Grid.Row="1">
-                                            <TextBlock Text="{Binding Massege}" Grid.Column="0" FontSize="17" Margin="10 0 0 0"/>
+                                            <TextBlock Text="{Binding Message}" Grid.Column="0" FontSize="17" Margin="10 0 0 0"/>
                                         </Grid>
                                     </Grid>
                                     <Grid Grid.Column="1">
@@ -111,9 +110,6 @@
                                             <RowDefinition Height="35"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0">
-                                            <TextBlock Text="{Binding Time}" FontSize="15" HorizontalAlignment="Right" Foreground="DimGray"/>
-                                        </Grid>
                                         <Grid Grid.Row="1">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="50"/>
@@ -131,8 +127,6 @@
                                             </Button>
                                         </Grid>
                                     </Grid>
-
-                                   
                                 </Grid>
                             </Border>
                         </Border>
@@ -151,5 +145,5 @@
             <Setter Property="ScrollViewer.Cursor" Value="Hand"/>
         </Style>
     </UserControl.Resources>
-    <ListBox Style="{StaticResource NotificationListBoxStyle}" ItemsSource="{Binding NotificationListItem}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
+    <ListBox x:Name="ListBoxNotification" Style="{StaticResource NotificationListBoxStyle}"  ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>

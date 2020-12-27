@@ -23,7 +23,7 @@ namespace ClientToServerApi.Models.ReceivedModels.UserModel
 
         public FileModel File { get; set; }
 
-        public bool IsOnline { get; set; }
+        public bool? IsOnline { get; set; }
 
     }
 

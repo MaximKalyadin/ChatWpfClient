@@ -22,7 +22,33 @@ namespace ChatUi.Custom_Controls
         public Notifications()
         {
             InitializeComponent();
-            DataContext = new ViewModel();
+            ListBoxNotification.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
+        }
+
+        public event EventHandler _eventListBox;
+
+        public int SelectedIndex
+        {
+            get
+            {
+                return ListBoxNotification.SelectedIndex;
+            }
+            set
+            {
+                ListBoxNotification.SelectedIndex = value;
+            }
+        }
+
+        public event EventHandler ListBoxSelectionChange
+        {
+            add
+            {
+                _eventListBox += value;
+            }
+            remove
+            {
+                _eventListBox -= value;
+            }
         }
     }
 }

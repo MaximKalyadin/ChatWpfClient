@@ -20,10 +20,11 @@ namespace ChatUi.Custom_Controls
     /// </summary>
     public partial class ChatList : UserControl
     {
+        ViewModel ViewModel = new ViewModel();
         public ChatList()
         {
             InitializeComponent();
-            DataContext = new ViewModel();
+            ListChat.ItemsSource = ViewModel.ChatListItems;
             ListChat.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
         }
 

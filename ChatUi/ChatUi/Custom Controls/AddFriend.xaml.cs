@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -19,10 +20,10 @@ namespace ChatUi.Custom_Controls
     /// </summary>
     public partial class AddFriend : UserControl
     {
+
         public AddFriend()
         {
             InitializeComponent();
-            DataContext = new ViewModel();
             ListBoxFriend.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
         }
 
@@ -53,5 +54,17 @@ namespace ChatUi.Custom_Controls
         }
 
 
+        private void PopupBorder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //var popup = ListBoxFriend.ListBoxItem.Template.FindName("PopupMore", ListBoxFriend) as Popup;
+            //popup.IsOpen = false;
+        }
+
+        private void ButtonMore_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //var popup = ListBoxFriend.Template.FindName("PopupMore", ListBoxFriend) as Popup;
+            //var popup = 
+            //popup.IsOpen = true;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace ClientToServerApi.Models.ReceivedModels.NotificationModels
 		public string Message { get; set; }
 		public int FromUserId { get; set; }
 		public string FromUserName { get; set; }
-		public byte[] UserPicture { get; set; }
+		public FileModel UserPicture { get; set; }
 
 	}
 

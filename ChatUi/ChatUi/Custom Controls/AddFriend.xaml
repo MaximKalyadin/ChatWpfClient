@@ -6,6 +6,53 @@
         xmlns:local="clr-namespace:ChatUi.Custom_Controls"
         mc:Ignorable="d" Height="Auto" Width="Auto">
     <UserControl.Resources>
+        <Style x:Key="ButtonPopupStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+        </Style>
+        <Style x:Key="PopupButtonDeleteFriendStyle" BasedOn="{StaticResource ResourceKey=ButtonPopupStyle}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="WhiteSmoke" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="DeleteChatButtonImage" Source="/assets/popupbuttons/deletechatblack32px.png" Width="30" Height="30"/>
+                                <TextBlock Margin="10 5 0 0" Text="Удалить из друзей" Background="Transparent" Height="30" Foreground="{Binding ElementName=DeleteChatButton, Path=Foreground}"/>
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                <Setter TargetName="DeleteChatButtonImage" Property="Image.Source" Value="/assets/popupbuttons/deletechatwhite32px.png"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="17"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}">
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="Focusable" Value="True"/>
@@ -78,23 +125,23 @@
                                                 <RowDefinition Height="*"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <local:RoundProfileButton ProfileImageSource="{Binding ContactProfilePic}" IsOnline="{Binding IsOnline}"/>
+                                            <local:RoundProfileButton IsOnline="{Binding IsOnline}"/>
                                             <Grid Grid.Column="1" Margin="13,0,0,0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
-                                                <TextBlock Text="{Binding ContactName}" FontWeight="Bold" FontSize="17"/>
-                                                <TextBlock Grid.Row="1" Text="{Binding Availability}" FontSize="15" Foreground="DimGray"/>
-                                                <Button x:Name="ButtonMore" Style="{StaticResource ButtonMore}">
+                                                <TextBlock Text="{Binding UserName}" FontWeight="Bold" FontSize="17"/>
+                                                <TextBlock Grid.Row="1" Text="{Binding IsOnline}" FontSize="15" Foreground="DimGray"/>
+                                                <Button x:Name="ButtonMore" Style="{StaticResource ButtonMore}" MouseEnter="ButtonMore_MouseEnter" >
                                                     <Button.Content>
                                                         <Image Source="/assets/more.png"/>
                                                     </Button.Content>
                                                 </Button>
-                                                <Popup x:Name="PopupMore" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=ButtonMore}" PopupAnimation="Slide">
-                                                    <Border x:Name="PopupBorder" Background="WhiteSmoke" BorderThickness="1" CornerRadius="10" BorderBrush="Black" >
+                                                <Popup x:Name="PopupMore" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=ButtonMore}" PopupAnimation="Slide" >
+                                                    <Border x:Name="PopupBorder" Background="WhiteSmoke" BorderThickness="1" CornerRadius="10" BorderBrush="Black" MouseLeave="PopupBorder_MouseLeave" >
                                                         <StackPanel Orientation="Vertical">
-                                                            
+                                                            <Button x:Name="DeleteFriendButton" Style="{StaticResource PopupButtonDeleteFriendStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
                                                         </StackPanel>
                                                     </Border>
                                                 </Popup>
@@ -119,5 +166,5 @@
             <Setter Property="ScrollViewer.Cursor" Value="Hand"/>
         </Style>
     </UserControl.Resources>
-    <ListBox x:Name="ListBoxFriend" Style="{StaticResource FriendListBoxStyle}" ItemsSource="{Binding FriendListItems}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
+    <ListBox x:Name="ListBoxFriend" Style="{StaticResource FriendListBoxStyle}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>

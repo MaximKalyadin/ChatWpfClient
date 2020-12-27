@@ -56,9 +56,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Custom_Controls:RoundProfileButton Height="250" Width="250" StrokeBrush="WhiteSmoke" Margin="20 20 0 10" Grid.Row="0" IsOnline="True" ProfileImageSource="/assets/profile1.jpg"/>
+            <Custom_Controls:RoundProfileButton x:Name="PictureSettings" Height="250" Width="250" StrokeBrush="WhiteSmoke" Margin="20 20 0 10" Grid.Row="0" IsOnline="True"/>
             <Grid Grid.Row="1">
-                <Button x:Name="ChangePhoto" Content="Сменить фото" Margin="30 0 0 0" Style="{StaticResource ButtonStyleFriendBorder}" Width="300" Height="40" VerticalAlignment="Top"/>
+                <Button x:Name="ChangePhoto" Content="Сменить фото" Margin="30 0 0 0" Style="{StaticResource ButtonStyleFriendBorder}" Width="300" Height="40" VerticalAlignment="Top" Click="ChangePhoto_Click"/>
                 <Border BorderBrush="Black" BorderThickness="0.7" CornerRadius="4" Opacity="0.9" Width="300" Height="270" Margin="30 50 0 0" Background="Snow">
                     <StackPanel x:Name="StackMyInfo" Orientation="Vertical" HorizontalAlignment="Left">
                         <TextBlock x:Name="NameTextBlock" Margin="15 10 15 2" TextAlignment="Left">

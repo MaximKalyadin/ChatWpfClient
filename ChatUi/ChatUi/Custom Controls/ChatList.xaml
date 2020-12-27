@@ -195,5 +195,5 @@
             <Setter Property="ScrollViewer.Cursor" Value="Hand"/>
         </Style>
     </UserControl.Resources>
-    <ListBox x:Name="ListChat" Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
+    <ListBox x:Name="ListChat" Style="{StaticResource ChatListBoxStyle}"  ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>

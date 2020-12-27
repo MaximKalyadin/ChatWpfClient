@@ -90,13 +90,13 @@
                 </Border>
             </Grid>
         </StackPanel>
-        <Custom_Controls:AddFriend Grid.Column="1" Grid.Row="1"/>
+        <Custom_Controls:AddFriend x:Name="ScreenListBoxUsers" Grid.Column="1" Grid.Row="1"/>
         <Grid Grid.Row="1" Grid.Column="2">
             <Border Height="300" Width="220"  Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel Orientation="Vertical" >
-                    <Button x:Name="MyFriend" Content="Мои друзья" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}" />
-                    <Button x:Name="FindFriend" Content="Найти друзей" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}" />
-                    <Button x:Name="SortFriend" Content="Недавние друзья" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}" />
+                    <Button x:Name="MyFriend" Content="Мои друзья" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}" Click="MyFriend_Click" />
+                    <Button x:Name="FindFriend" Content="Найти друзей" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}" Click="FindFriend_Click" />
+                    <Button x:Name="SortFriend" Content="Недавние друзья" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}" Click="SortFriend_Click" />
                 </StackPanel>
             </Border>
         </Grid>

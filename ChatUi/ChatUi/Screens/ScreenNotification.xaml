@@ -19,6 +19,6 @@
                 <TextBlock Text="Уведомления" HorizontalAlignment="Center" Foreground="WhiteSmoke" FontSize="28"/>
             </Border>
         </Grid>
-        <Custom_Controls:Notifications  Grid.Row="1" Visibility="Visible"/>
+        <Custom_Controls:Notifications x:Name="NotficationListbox"  Grid.Row="1" Visibility="Visible"/>
     </Grid>
 </UserControl>

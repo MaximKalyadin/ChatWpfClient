@@ -6,6 +6,7 @@ namespace ClientToServerApi.Models.Enums.Transmissions
         AuthorizationListener,
         RegistrationListener,
         UserInfoListener,
+        UserUpdateProfileListener,
 
         ChatListListener,
         ChatListDeleteListener,

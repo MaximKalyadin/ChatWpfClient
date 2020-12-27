@@ -27,6 +27,6 @@ namespace ClientToServerApi.Models.ResponseModels.UserModel
 
         public FileModel File { get; set; }
 
-        public bool IsOnline { get; set; }
+        public bool? IsOnline { get; set; }
     }
 }
