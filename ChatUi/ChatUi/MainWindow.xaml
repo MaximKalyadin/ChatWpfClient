@@ -424,6 +424,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="MyButtonStyleMyProfile" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
@@ -436,7 +450,12 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Custom_Controls:RoundProfileButton  Width="50" ProfileImageSource="/assets/profile1.jpg" />
+            <Button x:Name="ButtonProfile" Style="{StaticResource MyButtonStyleMyProfile}" Click="ButtonProfile_Click">
+                <Button.Content>
+                    <Custom_Controls:RoundProfileButton x:Name="myProfile" Width="50" ProfileImageSource="/assets/profile1.jpg" />
+                </Button.Content>
+            </Button>
+            
             <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0" x:Name="Menu" ListBoxSelectedIndex="Menu_ListBoxSelectedIndex"/>
         </Grid>
 

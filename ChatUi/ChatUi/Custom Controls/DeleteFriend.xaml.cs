@@ -12,49 +12,48 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ChatUi.Custom_Controls
 {
     /// <summary>
-    /// Логика взаимодействия для AddFriend.xaml
+    /// Логика взаимодействия для DeleteFriend.xaml
     /// </summary>
-    public partial class AddFriend : UserControl
+    public partial class DeleteFriend : UserControl
     {
-        public List<AllUsersView> _users = new List<AllUsersView>();
+        public List<AllUsersView> _friends = new List<AllUsersView>();
         public UserReceiveModel _userReceiveModel { get; set; }
         private readonly ClientServerService clientServerService_;
         static Serializer serializer = new Serializer();
-
-        public AddFriend()
+        public DeleteFriend()
         {
             InitializeComponent();
-            ListBoxUsers.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
+            ListBoxFriend.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
             clientServerService_ = ClientServerService.GetInstanse();
         }
 
-        int index = 0;
+        int? index = null;
         public event EventHandler _eventListBox;
 
         public int SelectedIndex
         {
             get
             {
-                return ListBoxUsers.SelectedIndex;
+                return ListBoxFriend.SelectedIndex;
             }
             set
             {
-                ListBoxUsers.SelectedIndex = value;
+                ListBoxFriend.SelectedIndex = value;
             }
         }
 
-        public int SelectedIndexItem
+        public int? SelectedIndexItem
         {
             get
             {
@@ -74,19 +73,19 @@ namespace ChatUi.Custom_Controls
             }
         }
 
-
         private void ButtonMore_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            index = ListBoxUsers.Items.IndexOf(button.DataContext);
+            index = ListBoxFriend.Items.IndexOf(button.DataContext);
+            var ind = ListBoxFriend.Items.IndexOf(button.DataContext);
             FriendResponseModel friend = new FriendResponseModel();
             friend.UserId = _userReceiveModel.Id;
-            friend.FriendId = _users[index].Id;
+            friend.FriendId = _friends[ind].Id;
             Debug.WriteLine(_userReceiveModel.Id);
             Debug.WriteLine(friend.FriendId + " " + friend.UserId);
             clientServerService_.SendAsync(new ClientOperationMessage()
             {
-                Operation = ClientOperations.AddFriend,
+                Operation = ClientOperations.DeleteFriend,
                 JsonData = serializer.Serialize(friend)
             });
         }

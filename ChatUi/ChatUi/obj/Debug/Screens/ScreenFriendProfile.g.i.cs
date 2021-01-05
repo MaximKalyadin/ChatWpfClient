@@ -49,6 +49,38 @@ namespace ChatUi.Screens {
         #line default
         #line hidden
         
+        
+        #line 21 "..\..\..\Screens\ScreenFriendProfile.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBlock FriendNameSurnameTextblock;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 22 "..\..\..\Screens\ScreenFriendProfile.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBlock FriendCountryCityTextBlock;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 26 "..\..\..\Screens\ScreenFriendProfile.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Documents.Run FriendPhoneRun;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 30 "..\..\..\Screens\ScreenFriendProfile.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Documents.Run FriendNickRun;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -96,6 +128,18 @@ namespace ChatUi.Screens {
             
             #line default
             #line hidden
+            return;
+            case 3:
+            this.FriendNameSurnameTextblock = ((System.Windows.Controls.TextBlock)(target));
+            return;
+            case 4:
+            this.FriendCountryCityTextBlock = ((System.Windows.Controls.TextBlock)(target));
+            return;
+            case 5:
+            this.FriendPhoneRun = ((System.Windows.Documents.Run)(target));
+            return;
+            case 6:
+            this.FriendNickRun = ((System.Windows.Documents.Run)(target));
             return;
             }
             this._contentLoaded = true;

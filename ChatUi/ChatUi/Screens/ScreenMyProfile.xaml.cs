@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientToServerApi.Models.ReceivedModels.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,38 @@ namespace ChatUi.Screens
         public ScreenMyProfile()
         {
             InitializeComponent();
+        }
+
+        public void MyProfile(UserReceiveModel model)
+        {
+            if (model != null)
+            {
+                if (model.Name != null && model.SecondName != null)
+                {
+                    NameSurnameTextBlock.Text = model.Name.ToString() + " " + model.SecondName.ToString();
+                }
+                if (model.PhoneNumber != null)
+                {
+                    PhoneRun.Text = model.PhoneNumber.ToString();
+                }
+                if (model.Country != null && model.City != null)
+                {
+                    CountryCityTextBlock.Text = model.Country.ToString() + " " + model.City.ToString();
+                }
+                if (model.UserName != null)
+                {
+                    NickNameTextBlock.Text = model.UserName.ToString();
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Не удалось Загрузить данные!");
+            }
+        }
+
+        private void ButtonCloseMyProfile_Click(object sender, RoutedEventArgs e)
+        {
+            GridMyProfile.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿using System;
+﻿using ClientToServerApi;
+using ClientToServerApi.Models.Enums.Transmissions;
+using ClientToServerApi.Models.ReceivedModels.NotificationModels;
+using ClientToServerApi.Models.ReceivedModels.UserModel;
+using ClientToServerApi.Models.ResponseModels.NotificationsModels;
+using ClientToServerApi.Models.TransmissionModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +25,19 @@ namespace ChatUi.Custom_Controls
     /// </summary>
     public partial class Notifications : UserControl
     {
+        static Serializer serializer = new Serializer();
+        private readonly ClientServerService clientServerService_;
+        public UserReceiveModel _userReceiveModel { get; set; }
+        List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();
         public Notifications()
         {
             InitializeComponent();
+            clientServerService_ = ClientServerService.GetInstanse();
             ListBoxNotification.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
         }
 
         public event EventHandler _eventListBox;
-
+        int? index = null;
         public int SelectedIndex
         {
             get
@@ -36,6 +47,14 @@ namespace ChatUi.Custom_Controls
             set
             {
                 ListBoxNotification.SelectedIndex = value;
+            }
+        }
+
+        public int? SelectedIndexItem
+        {
+            get
+            {
+                return index;
             }
         }
 
@@ -49,6 +68,40 @@ namespace ChatUi.Custom_Controls
             {
                 _eventListBox -= value;
             }
+        }
+
+        private void ButtonOk_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            index = ListBoxNotification.Items.IndexOf(button.DataContext);
+            var ind = ListBoxNotification.Items.IndexOf(button.DataContext);
+            NotificationResponseModel model = new NotificationResponseModel();
+            model.Id = notifications[ind].Id;
+            model.IsAccepted = true;
+            model.ToUserId = _userReceiveModel.Id;
+            model.FromUserId = notifications[ind].FromUserId;
+            clientServerService_.SendAsync(new ClientOperationMessage()
+            {
+                Operation = ClientOperations.UpdateNotification,
+                JsonData = serializer.Serialize(model)
+            });
+        }
+
+        private void ButtonNot_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            index = ListBoxNotification.Items.IndexOf(button.DataContext);
+            var ind = ListBoxNotification.Items.IndexOf(button.DataContext);
+            NotificationResponseModel model = new NotificationResponseModel();
+            model.Id = notifications[ind].Id;
+            model.IsAccepted = false;
+            model.ToUserId = _userReceiveModel.Id;
+            model.FromUserId = notifications[ind].FromUserId;
+            clientServerService_.SendAsync(new ClientOperationMessage()
+            {
+                Operation = ClientOperations.UpdateNotification,
+                JsonData = serializer.Serialize(model)
+            });
         }
     }
 }

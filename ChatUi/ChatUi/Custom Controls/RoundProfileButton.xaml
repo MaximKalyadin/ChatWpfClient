@@ -25,7 +25,7 @@
         </Style>
     </UserControl.Resources>
     <Viewbox Stretch="Fill" x:Name="ViewBoxProfileIcon">
-        <Button>
+        <Button x:Name="ButtonProfile" Click="ButtonProfile_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="HorizontalAlignment" Value="Center"/>

@@ -18,19 +18,16 @@
         </Button>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15 0 15 0">
             <Custom_Controls:RoundProfileButton Height="160" Width="160" StrokeBrush="WhiteSmoke"/>
-            <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин максим" FontWeight="Bold" FontSize="20"/>
-            <TextBlock Margin="0,6,0,0" TextAlignment="Center" Text="Russia, Ulyanovsk" FontSize="17" Foreground="#b7B5B8"/>
-            <TextBlock Margin="0,18,0,0" TextAlignment="Center">
-                    <Run Text="Типа статус" FontSize="14"/>
-            </TextBlock>
+            <TextBlock x:Name="FriendNameSurnameTextblock" Margin="0,18,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="20"/>
+            <TextBlock x:Name="FriendCountryCityTextBlock" Margin="0,6,0,0" TextAlignment="Center" FontSize="17" Foreground="#b7B5B8"/>
             <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
             <TextBlock Margin="5,25,0,0" TextAlignment="Left">
                     <Run Text="Phone:   " Foreground="#B7B5B8" FontSize="14"/>
-                    <Run Text="+7(967) 774 77 60" FontSize="14"/>
+                    <Run x:Name="FriendPhoneRun" FontSize="14"/>
             </TextBlock>
             <TextBlock Margin="5,10,0,0" TextAlignment="Left">
-                    <Run Text="E-mail:   " Foreground="#B7B5B8" FontSize="14"/>
-                    <Run Text="kalyadin.maksim@mail.ru" FontSize="14"/>
+                    <Run Text="Nick:   " Foreground="#B7B5B8" FontSize="14"/>
+                    <Run x:Name="FriendNickRun" FontSize="14"/>
             </TextBlock>
             <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
         </StackPanel>

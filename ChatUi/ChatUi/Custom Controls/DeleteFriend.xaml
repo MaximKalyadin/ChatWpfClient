@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="ChatUi.Custom_Controls.AddFriend"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChatUi.Custom_Controls"
-        mc:Ignorable="d" Height="Auto" Width="Auto">
+﻿<UserControl x:Class="ChatUi.Custom_Controls.DeleteFriend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChatUi.Custom_Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style x:Key="ButtonPopupStyle" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
@@ -126,7 +127,7 @@
                                                 <RowDefinition Height="*"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <local:RoundProfileButton x:Name="ImageUsers" IsOnline="{Binding Online}"/>
+                                            <local:RoundProfileButton x:Name="ImageFriend" IsOnline="{Binding Online}"/>
                                             <Grid Grid.Column="1" Margin="13,0,0,0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
@@ -136,7 +137,7 @@
                                                 <TextBlock Grid.Row="1" Text="{Binding IsOnline}" FontSize="15" Foreground="DimGray"/>
                                                 <Button x:Name="ButtonMore" Style="{StaticResource ButtonMore}" Click="ButtonMore_Click" >
                                                     <Button.Content>
-                                                        Добавить
+                                                        Удалить
                                                     </Button.Content>
                                                 </Button>
                                             </Grid>
@@ -160,5 +161,5 @@
             <Setter Property="ScrollViewer.Cursor" Value="Hand"/>
         </Style>
     </UserControl.Resources>
-    <ListBox x:Name="ListBoxUsers" Style="{StaticResource FriendListBoxStyle}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
+    <ListBox x:Name="ListBoxFriend" Style="{StaticResource FriendListBoxStyle}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>

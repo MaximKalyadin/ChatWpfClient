@@ -90,7 +90,8 @@
                 </Border>
             </Grid>
         </StackPanel>
-        <Custom_Controls:AddFriend x:Name="ScreenListBoxUsers" Grid.Column="1" Grid.Row="1"/>
+        <Custom_Controls:AddFriend x:Name="ScreenListBoxUsers" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"/>
+        <Custom_Controls:DeleteFriend x:Name="ScreenListBoxFriends" Grid.Column="1" Grid.Row="1" Visibility="Collapsed" ListBoxSelectionChange="ScreenListBoxFriends_ListBoxSelectionChange"/>
         <Grid Grid.Row="1" Grid.Column="2">
             <Border Height="300" Width="220"  Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel Orientation="Vertical" >

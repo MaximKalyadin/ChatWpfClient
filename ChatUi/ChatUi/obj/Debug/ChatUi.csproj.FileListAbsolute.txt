@@ -141,3 +141,5 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CoreCom
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CopyComplete
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.exe
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.pdb
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.baml

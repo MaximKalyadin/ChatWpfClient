@@ -8,29 +8,26 @@
     <UserControl.Resources>
         
     </UserControl.Resources>
-    <Grid Grid.Column="0" Grid.RowSpan="2" Visibility="Visible">
+    <Grid x:Name="GridMyProfile" Grid.Column="0" Grid.RowSpan="2" >
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0 35 13 0" Height="25" Width="25">
+        <Button x:Name="ButtonCloseMyProfile" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0 35 13 0" Height="25" Width="25" Click="ButtonCloseMyProfile_Click">
             <Image Source="/assets/close.png" Height="20" Width="20"/>
         </Button>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15 0 15 0">
-            <Custom_Controls:RoundProfileButton Height="200" Width="200" StrokeBrush="WhiteSmoke" ProfileImageSource="/assets/profile1.jpg"/>
-            <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин Максим" FontWeight="Bold" FontSize="20"/>
-            <TextBlock Margin="0,6,0,0" TextAlignment="Center" Text="Russia, Ulyanovsk" FontSize="17" Foreground="Black"/>
-            <TextBlock Margin="0,18,0,0" TextAlignment="Center">
-                    <Run Text="Типа статус" FontSize="14"/>
-            </TextBlock>
+            <Custom_Controls:RoundProfileButton x:Name="MyProfileImageScreen" Height="200" Width="200" StrokeBrush="WhiteSmoke" />
+            <TextBlock x:Name="NameSurnameTextBlock" Margin="0,18,0,0" TextAlignment="Center"  FontWeight="Bold" FontSize="20"/>
+            <TextBlock x:Name="CountryCityTextBlock" Margin="0,6,0,0" TextAlignment="Center" FontSize="17" Foreground="Black"/>
             <Separator Width="350" Background="White" Focusable="False" Margin="0,25,0,0"/>
             <TextBlock Margin="30,25,0,0" TextAlignment="Left">
-                    <Run Text="Phone:   " Foreground="White" FontSize="14"/>
-                    <Run Text="+7(967) 774 77 60" FontSize="14" Foreground="White"/>
+                    <Run  Text="Phone:   " Foreground="White" FontSize="14"/>
+                    <Run x:Name="PhoneRun"  FontSize="14" Foreground="White"/>
             </TextBlock>
             <TextBlock Margin="30,10,0,0" TextAlignment="Left">
-                    <Run Text="E-mail:   " Foreground="White" FontSize="14"/>
-                    <Run Text="kalyadin.maksim@mail.ru" FontSize="14" Foreground="White"/>
+                    <Run Text="Nick:   " Foreground="White" FontSize="14"/>
+                    <Run  x:Name="NickNameTextBlock"  FontSize="14" Foreground="White"/>
             </TextBlock>
             <Separator Width="350" Background="White" Focusable="False" Margin="0,25,0,0"/>
         </StackPanel>

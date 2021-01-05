@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,29 @@ namespace ChatUi.Custom_Controls
         public RoundProfileButton()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler _event;
+        public event EventHandler ViewBoxSelectionChange
+        {
+            add
+            {
+                _event += value;
+            }
+            remove
+            {
+                _event -= value;
+            }
+        }
+
+        public bool IsProfileVisible { get; set; }
+
+        public bool ViewMyProfile
+        {
+            get
+            {
+                return true;
+            }
         }
 
         public SolidColorBrush StrokeBrush
@@ -50,5 +74,10 @@ namespace ChatUi.Custom_Controls
 
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("ProfileImageSource", typeof(ImageSource), typeof(RoundProfileButton));
+
+        private void ButtonProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

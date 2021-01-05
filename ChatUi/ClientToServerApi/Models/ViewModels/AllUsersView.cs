@@ -10,5 +10,6 @@ namespace ClientToServerApi.Models.ViewModels
         public string UserName { get; set; }
         public FileModel Picture { get; set; }
         public string IsOnline { get; set; }
+        public bool Online { get; set; }
     }
 }

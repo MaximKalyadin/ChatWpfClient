@@ -53,6 +53,11 @@ namespace ClientToServerApi
                 networkStream_.Close();
         }
 
+        public void CloseConnection()
+        {
+            tcpClient_.Close();
+        }
+
         public static void ShutdownReceiving() => receiveThread_.Abort();
 
         private NetworkStream Connect(string ServerIp, string ServerPort)
@@ -93,7 +98,7 @@ namespace ClientToServerApi
         {
             try
             {
-                byte[] buffer = new byte[256*2];
+                byte[] buffer = new byte[256];
                 
                 while (true)
                 {
@@ -111,7 +116,10 @@ namespace ClientToServerApi
                         dataManager_.HandleData(obj.ToListener, obj);
                         stringBuilder.Clear();
                     }
-                    catch (Exception ex) { Debug.WriteLine(ex.Message); }
+                    catch (Exception ex) 
+                    { 
+                        Debug.WriteLine(ex.Message); 
+                    }
                 }
             }
             catch(Exception)
