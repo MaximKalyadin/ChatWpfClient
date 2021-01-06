@@ -97,6 +97,7 @@ namespace ChatUi.Screens
                         if (el.Id == userListReceiveModels.UserId)
                         {
                             friendViews.Remove(el);
+                            break;
                         }
                     }
                 }
