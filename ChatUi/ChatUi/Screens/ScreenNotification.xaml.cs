@@ -1,6 +1,7 @@
 ﻿using ClientToServerApi;
 using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.NotificationModels;
+using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace ChatUi.Screens
         static Serializer serializer = new Serializer();
         private readonly ClientServerService clientServerService_;
         List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();
+        public UserReceiveModel _userReceiveModel { get; set; }
         public bool IsChange = false;
         public ScreenNotification()
         {
@@ -36,37 +38,51 @@ namespace ChatUi.Screens
 
         public void ViewNotifications()
         {
+            NotficationListbox.ListBoxNotification.ItemsSource = null;
             NotficationListbox.ListBoxNotification.ItemsSource = notifications;
+            NotficationListbox._userReceiveModel = _userReceiveModel;
         }
 
         public void Notification(OperationResultInfo operationResultInfo)
         {
             this.Dispatcher.InvokeAsync(() =>
             {
-                if (operationResultInfo.JsonData != null)
+                try
                 {
-                    notifications = serializer.Deserialize<List<NotificationReceiveModel>>(operationResultInfo.JsonData as string);
-                    IsChange = true;
+                    if (operationResultInfo.JsonData != null)
+                    {
+                        var notifi = serializer.Deserialize<NotificationReceiveModel>(operationResultInfo.JsonData as string);
+                        notifications.Add(notifi);
+                    }
                 }
-                else if (string.IsNullOrEmpty(operationResultInfo.ErrorInfo))
+                catch
                 {
-                    MessageBox.Show("Уведомлений нет");
+                    if (operationResultInfo.JsonData != null)
+                    {
+                        notifications = serializer.Deserialize<List<NotificationReceiveModel>>(operationResultInfo.JsonData as string);
+                        NotficationListbox.notifications = notifications;
+                        IsChange = true;
+                    }
+                    else if (string.IsNullOrEmpty(operationResultInfo.ErrorInfo))
+                    {
+                        MessageBox.Show("Уведомлений нет");
+                    }
+                    else
+                    {
+                        MessageBox.Show(operationResultInfo.ErrorInfo);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show(operationResultInfo.ErrorInfo);
-                }
+                NotficationListbox.ListBoxNotification.ItemsSource = null;
+                NotficationListbox.ListBoxNotification.ItemsSource = notifications;
             });
             
         }
 
         private void NotficationListbox_ListBoxSelectionChange(object sender, EventArgs e)
         {
-            if (NotficationListbox.SelectedIndexItem != null)
-            {
-                notifications.RemoveAt((int)NotficationListbox.SelectedIndexItem);
-                NotficationListbox.ListBoxNotification.ItemsSource = notifications;
-            }
+            notifications = NotficationListbox.notifications;
+            NotficationListbox.ListBoxNotification.ItemsSource = null;
+            NotficationListbox.ListBoxNotification.ItemsSource = notifications;
         }
     }
 }

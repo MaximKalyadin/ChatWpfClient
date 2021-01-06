@@ -158,6 +158,7 @@ namespace ChatUi
                             })
                         });
                     }
+                    Chat.Notification._userReceiveModel = userReceiveModel;
                     Chat.Notification.ViewNotifications();
                     break;
                 case 3:

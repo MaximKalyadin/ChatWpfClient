@@ -40,7 +40,6 @@ namespace ChatUi.Custom_Controls
 
         int? index = null;
         public event EventHandler _eventListBox;
-
         public int SelectedIndex
         {
             get
@@ -52,12 +51,15 @@ namespace ChatUi.Custom_Controls
                 ListBoxFriend.SelectedIndex = value;
             }
         }
-
         public int? SelectedIndexItem
         {
             get
             {
                 return index;
+            }
+            set
+            {
+                index = value;
             }
         }
 
@@ -82,12 +84,24 @@ namespace ChatUi.Custom_Controls
             friend.UserId = _userReceiveModel.Id;
             friend.FriendId = _friends[ind].Id;
             Debug.WriteLine(_userReceiveModel.Id);
+            
             Debug.WriteLine(friend.FriendId + " " + friend.UserId);
+
+            foreach(var el in _friends)
+            {
+                if (el.Id == friend.FriendId)
+                {
+                    _friends.Remove(el);
+                    break;
+                }
+            }
+            ListBoxFriend.SelectedIndex = ind;
             clientServerService_.SendAsync(new ClientOperationMessage()
             {
                 Operation = ClientOperations.DeleteFriend,
                 JsonData = serializer.Serialize(friend)
             });
+            
         }
     }
 }

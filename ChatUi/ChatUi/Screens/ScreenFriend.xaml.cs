@@ -5,6 +5,7 @@ using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,19 +36,22 @@ namespace ChatUi.Screens
             clientServerService_ = ClientServerService.GetInstanse();
             clientServerService_.AddListener(ListenerType.UserListListener, UsersList);
             clientServerService_.AddListener(ListenerType.FriendListListener, UsersFriendListener);
+            clientServerService_.AddListener(ListenerType.FriendListDeleteListener, UserDeleteListener);
             ScreenListBoxFriends.ListBoxFriend.ItemsSource = friendViews;
         }
 
         private void MyFriend_Click(object sender, RoutedEventArgs e)
         {
-            ScreenListBoxFriends.ListBoxFriend.ItemsSource = friendViews;
+            Itemsource();
+            SendDataInList();
             ScreenListBoxFriends.Visibility = Visibility.Visible;
             ScreenListBoxUsers.Visibility = Visibility.Collapsed;
         }
 
         private void FindFriend_Click(object sender, RoutedEventArgs e)
         {
-            ScreenListBoxUsers.ListBoxUsers.ItemsSource = usersViews;
+            Itemsource();
+            SendDataInList();
             ScreenListBoxUsers.Visibility = Visibility.Visible;
             ScreenListBoxFriends.Visibility = Visibility.Collapsed;
         }
@@ -56,12 +60,49 @@ namespace ChatUi.Screens
         {
             //in developing
         }
+        public void Itemsource()
+        {
+            ScreenListBoxFriends.ListBoxFriend.ItemsSource = null;
+            ScreenListBoxUsers.ListBoxUsers.ItemsSource = null;
+            ScreenListBoxFriends.ListBoxFriend.ItemsSource = friendViews;
+            ScreenListBoxUsers.ListBoxUsers.ItemsSource = usersViews;
+        }
+
+        public void SendDataInList()
+        {
+            ScreenListBoxUsers._userReceiveModel = _userReceiveModel;
+            ScreenListBoxFriends._userReceiveModel = _userReceiveModel;
+            ScreenListBoxFriends._friends = friendViews;
+            ScreenListBoxUsers._users = usersViews;
+        }
 
         public void ViewFriend()
         {
             ScreenListBoxFriends.ListBoxFriend.ItemsSource = friendViews;
             ScreenListBoxFriends.Visibility = Visibility.Visible;
             ScreenListBoxUsers.Visibility = Visibility.Collapsed;
+            Itemsource();
+            SendDataInList();
+        }
+
+        public void UserDeleteListener(OperationResultInfo operationResultInfo)
+        {
+            this.Dispatcher.InvokeAsync(() =>
+            {
+                if (operationResultInfo.JsonData != null)
+                {
+                    var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData as string);
+                    foreach (var el in friendViews)
+                    {
+                        if (el.Id == userListReceiveModels.UserId)
+                        {
+                            friendViews.Remove(el);
+                        }
+                    }
+                }
+                Itemsource();
+                SendDataInList();
+            });
         }
 
         public void UsersFriendListener(OperationResultInfo operationResultInfo)
@@ -88,7 +129,7 @@ namespace ChatUi.Screens
                             usersView.Online = false;
                         }
                         int f = 0;
-                        foreach(var el in usersViews)
+                        foreach(var el in friendViews)
                         {
                             if (el.Id == usersView.Id)
                             {
@@ -136,8 +177,8 @@ namespace ChatUi.Screens
                         MessageBox.Show(operationResultInfo.ErrorInfo);
                     }
                 }
-                ScreenListBoxFriends._friends = friendViews;
-                ScreenListBoxFriends._userReceiveModel = _userReceiveModel;
+                Itemsource();
+                SendDataInList();
             });
         }
 
@@ -166,8 +207,7 @@ namespace ChatUi.Screens
                         }
                         usersViews.Add(usersView);
                     }
-                    ScreenListBoxUsers._users = usersViews;
-                    ScreenListBoxUsers._userReceiveModel = _userReceiveModel;
+                    
                 }
                 else if (string.IsNullOrEmpty(operationResultInfo.ErrorInfo))
                 {
@@ -177,16 +217,16 @@ namespace ChatUi.Screens
                 {
                     MessageBox.Show(operationResultInfo.ErrorInfo);
                 }
+                Itemsource();
+                SendDataInList();
             });
         }
 
         private void ScreenListBoxFriends_ListBoxSelectionChange(object sender, EventArgs e)
         {
-            if (ScreenListBoxFriends.SelectedIndexItem != null)
-            {
-                friendViews.RemoveAt((int)ScreenListBoxFriends.SelectedIndexItem);
-                ScreenListBoxFriends.ListBoxFriend.ItemsSource = friendViews;
-            }
+            friendViews = ScreenListBoxFriends._friends;
+            ScreenListBoxFriends.ListBoxFriend.ItemsSource = null;
+            ScreenListBoxFriends.ListBoxFriend.ItemsSource = friendViews;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ChatUi.Custom_Controls
         static Serializer serializer = new Serializer();
         private readonly ClientServerService clientServerService_;
         public UserReceiveModel _userReceiveModel { get; set; }
-        List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();
+        public List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();
         public Notifications()
         {
             InitializeComponent();
@@ -56,6 +56,10 @@ namespace ChatUi.Custom_Controls
             {
                 return index;
             }
+            set
+            {
+                index = value;
+            }
         }
 
         public event EventHandler ListBoxSelectionChange
@@ -80,11 +84,22 @@ namespace ChatUi.Custom_Controls
             model.IsAccepted = true;
             model.ToUserId = _userReceiveModel.Id;
             model.FromUserId = notifications[ind].FromUserId;
+
+
+            foreach(var el in notifications)
+            {
+                if (el.Id == model.Id)
+                {
+                    notifications.Remove(el);
+                    break;
+                }
+            }
             clientServerService_.SendAsync(new ClientOperationMessage()
             {
                 Operation = ClientOperations.UpdateNotification,
                 JsonData = serializer.Serialize(model)
             });
+            ListBoxNotification.SelectedIndex = ind;
         }
 
         private void ButtonNot_Click(object sender, RoutedEventArgs e)
@@ -97,11 +112,20 @@ namespace ChatUi.Custom_Controls
             model.IsAccepted = false;
             model.ToUserId = _userReceiveModel.Id;
             model.FromUserId = notifications[ind].FromUserId;
+            foreach (var el in notifications)
+            {
+                if (el.Id == model.Id)
+                {
+                    notifications.Remove(el);
+                    break;
+                }
+            }
             clientServerService_.SendAsync(new ClientOperationMessage()
             {
                 Operation = ClientOperations.UpdateNotification,
                 JsonData = serializer.Serialize(model)
             });
+            ListBoxNotification.SelectedIndex = ind;
         }
     }
 }
