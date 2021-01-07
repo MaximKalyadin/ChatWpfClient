@@ -124,6 +124,19 @@ namespace ChatUi
                     Chat.ChatList.Visibility = Visibility.Visible;
                     Chat.Notification.Visibility = Visibility.Collapsed;
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
+
+                    if (!Chat.IsChange)
+                    {
+                        clientServerService_.SendAsync(new ClientOperationMessage
+                        {
+                            Operation = ClientOperations.GetChats,
+                            JsonData = serializer.Serialize(new UserPaginationResponseModel
+                            {
+                                UserId = userReceiveModel.Id
+                            })
+                        });
+                    }
+                    Chat._userReceiveModel = userReceiveModel;
                     break;
                 case 1: 
                     //friend

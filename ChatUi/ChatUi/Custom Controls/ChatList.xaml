@@ -102,13 +102,13 @@
                                                 <RowDefinition Height="*"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <local:RoundProfileButton ProfileImageSource="{Binding ContactProfilePic}" IsOnline="{Binding IsOnline}"/>
+                                            <local:RoundProfileButton  IsOnline="{Binding IsOnline}"/>
                                             <Grid Grid.Column="1" Margin="13,0,0,0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
-                                                <TextBlock Text="{Binding ContactName}" FontWeight="Bold" FontSize="17">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="17">
                                                     <TextBlock.Style>
                                                         <Style TargetType="{x:Type TextBlock}">
                                                             <Style.Triggers>
@@ -122,8 +122,8 @@
                                                         </Style>
                                                     </TextBlock.Style>
                                                 </TextBlock>
-                                                <TextBlock Text="{Binding LastMessageTime}" FontSize="15" HorizontalAlignment="Right" Foreground="DimGray"/>
-                                                <TextBlock Grid.Row="1" Text="{Binding Availability}" FontSize="15" Foreground="DimGray"/>
+                                                <TextBlock Text="{Binding LastMassege}" FontSize="15" HorizontalAlignment="Right" Foreground="DimGray"/>
+                                                <TextBlock Grid.Row="1" Text="{Binding Online}" FontSize="15" Foreground="DimGray"/>
                                             </Grid>
                                         </Grid>
                                         <Grid Margin="28,0,28,0" Width="330">
@@ -147,7 +147,7 @@
                                                     </Style>
                                                 </Image.Style>
                                             </Image>
-                                            <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="{Binding Message}" FontSize="14" VerticalAlignment="Center">
+                                            <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="{Binding NewMessage}" FontSize="14" VerticalAlignment="Center">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
@@ -166,14 +166,14 @@
                                                     <Style TargetType="{x:Type Grid}">
                                                         <Setter Property="Visibility" Value="Visible"/>
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding NewMsgCount}" Value="{x:Null}">
+                                                            <DataTrigger Binding="{Binding MessageCount}" Value="{x:Null}">
                                                                 <Setter Property="Visibility" Value="Collapsed"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Grid.Style>
                                                 <Ellipse Fill="#F54A4A"  Width="25" Height="25"/>
-                                                <TextBlock Text="{Binding NewMsgCount}" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="White"/>
+                                                <TextBlock Text="{Binding MessageCount}" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="White"/>
                                             </Grid>
                                         </Grid>
                                     </StackPanel>

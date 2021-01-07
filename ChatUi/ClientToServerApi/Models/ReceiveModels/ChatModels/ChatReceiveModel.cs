@@ -2,7 +2,7 @@ using ClientToServerApi.Models.ReceivedModels.ChatModels;
 using System;
 using System.Collections.Generic;
 
-namespace ClientToServerApi.Models.ReceivedModels 
+namespace ClientToServerApi.Models.ReceivedModels.ChatModels
 {
 	public class ChatReceiveModel 
 	{
