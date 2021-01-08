@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ChatUi.Screens;
+using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ViewModels;
 
 namespace ChatUi.Screens
@@ -26,7 +27,7 @@ namespace ChatUi.Screens
             InitializeComponent();
         }
 
-        public void ViewFriend(FriendProfileView profileView)
+        public void ViewFriend(UserReceiveModel profileView)
         {
             if(profileView.Name != null && profileView.SecondName != null)
             {
@@ -36,15 +37,15 @@ namespace ChatUi.Screens
             {
                 FriendCountryCityTextBlock.Text = profileView.Country + " " + profileView.City;
             }
-            if (profileView.Phone != null)
+            if (profileView.PhoneNumber != null)
             {
-                FriendPhoneRun.Text = profileView.Phone;
+                FriendPhoneRun.Text = profileView.PhoneNumber;
             }
             if (profileView.UserName != null)
             {
                 FriendNickRun.Text = profileView.UserName;
             }
-            ImageFriend.IsOnline = profileView.IsOnline;
+            ImageFriend.IsOnline = (bool)profileView.IsOnline;
         }
 
         private void CloseProfileFriend_Click(object sender, RoutedEventArgs e)

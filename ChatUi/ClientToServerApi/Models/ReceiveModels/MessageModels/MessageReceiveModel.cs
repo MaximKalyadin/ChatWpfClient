@@ -9,7 +9,6 @@ namespace ClientToServerApi.Models.ReceivedModels.MessageModels
 		public int ChatId { get; set; }
 		public string UserMassage { get; set; }
 		public DateTime Date { get; set; }
-
 	}
 
 }

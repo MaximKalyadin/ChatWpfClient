@@ -4,6 +4,7 @@ using ClientToServerApi.Models.ReceivedModels.ChatModels;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModel.ChatModels;
 using ClientToServerApi.Models.ResponseModels.ChatModels;
+using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
 using System;
@@ -41,10 +42,30 @@ namespace ChatUi.Screens
             clientServerService_ = ClientServerService.GetInstanse();
             clientServerService_.AddListener(ListenerType.ChatListListener,ChatListListener);
             clientServerService_.AddListener(ListenerType.ChatListDeleteListener, DeleteChatList);
+            clientServerService_.AddListener(ListenerType.UserInfoListener, UserInfo);
+        }
+
+        public void UserInfo(OperationResultInfo operationResultInfo)
+        {
+            Dispatcher.InvokeAsync(() =>
+            {
+                if (operationResultInfo.JsonData != null)
+                {
+                    var data = serializer.Deserialize<UserReceiveModel>(operationResultInfo.JsonData as string);
+                    FriendProfile.Visibility = Visibility.Visible;
+                    FriendProfile.ProfileFriend.Visibility = Visibility.Visible;
+                    FriendProfile.ViewFriend(data);
+                }
+                else
+                {
+                    MessageBox.Show("User info is null or empty");
+                }
+            });
         }
 
         private void ViewChat()
         {
+            chatView.Clear();
             foreach(var el in chats)
             {
                 ChatListViewModel chatListView = new ChatListViewModel();
@@ -59,21 +80,23 @@ namespace ChatUi.Screens
                 else
                 {
                     var data = el.ChatUsers.FirstOrDefault(c => c.Id != _userReceiveModel.Id);
-                    if (data == null) break;
-                    chatListView.Id = data.Id;
-                    chatListView.Name = data.UserName;
-                    if (data.IsOnline)
+                    if (data != null)
                     {
-                        chatListView.IsOnline = true;
-                        chatListView.Online = "Online";
+                        chatListView.Id = data.Id;
+                        chatListView.Name = data.UserName;
+                        if (data.IsOnline)
+                        {
+                            chatListView.IsOnline = true;
+                            chatListView.Online = "Online";
+                        }
+                        else
+                        {
+                            chatListView.IsOnline = false;
+                            chatListView.Online = "Offline";
+                        }
+                        chatListView.CountUsers = 2;
+                        chatView.Add(chatListView);
                     }
-                    else
-                    {
-                        chatListView.IsOnline = false;
-                        chatListView.Online = "Offline";
-                    }
-                    chatListView.CountUsers = 2;
-                    chatView.Add(chatListView);
                 }
             }
         }
@@ -88,42 +111,26 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
-                try
+
+                if (operationResultInfo.JsonData != null)
                 {
-                    if (operationResultInfo.JsonData != null)
+                    var data = serializer.Deserialize<List<ChatReceiveModel>>(operationResultInfo.JsonData as string);
+                    foreach(var el in data)
                     {
-                        var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData as string);
-                        var chat = chats.FirstOrDefault(c => c.Id == data.Id || c.ChatName == data.ChatName && c.CreatorId == data.CreatorId && c.CountUsers == c.CountUsers);
+                        var chat = chats.FirstOrDefault(c => c.Id == el.Id);
                         if (chat == null)
                         {
-                            chats.Add(data);
-                        }
-                        else
+                            chats.Add(el);
+                        } else
                         {
-                            chat = data;
-                        }
-                        for (int i = 0; i < chats.Count; i++)
-                        {
-                            if (chat.Id == chats[i].Id)
+                            for (int i = 0; i < chats.Count; i++)
                             {
-                                chats[i] = chat;
+                                if (el.Id == chats[i].Id)
+                                {
+                                    chats[i] = el;
+                                }
                             }
                         }
-                    } else
-                    {
-                        MessageBox.Show("Data is null or empty");
-                    }
-                }
-                catch
-                {
-                    if (operationResultInfo.JsonData != null)
-                    {
-                        var data = serializer.Deserialize<List<ChatReceiveModel>>(operationResultInfo.JsonData as string);
-                        chats = data;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка чатов!");
                     }
                 }
                 IsChange = true;
@@ -160,23 +167,19 @@ namespace ChatUi.Screens
             if (ChatList.SelectedIndex >= 0)
             {
                 ChatId = ChatList.SelectedIndex;
-                if (chatView[ChatList.SelectedIndex].CountUsers == 2)
+                BorderSendMassege.Visibility = Visibility.Visible;
+                ImageChat.IsOnline = chatView[ChatList.SelectedIndex].IsOnline;
+                UserNameSurnameChatRun.Text = chatView[ChatList.SelectedIndex].Name;
+                OnlineRun.Text = chatView[ChatList.SelectedIndex].Online;
+                FriendProfileView = new FriendProfileView
                 {
-                    BorderSendMassege.Visibility = Visibility.Visible;
-                    ImageChat.IsOnline = chatView[ChatList.SelectedIndex].IsOnline;
-                    UserNameSurnameChatRun.Text = chatView[ChatList.SelectedIndex].Name;
-                    OnlineRun.Text = chatView[ChatList.SelectedIndex].Online;
-                    
-                    FriendProfileView = new FriendProfileView
-                    {
-                        Id = chatView[ChatList.SelectedIndex].Id,
-                        UserName = chatView[ChatList.SelectedIndex].Name,
-                        IsOnline = chatView[ChatList.SelectedIndex].IsOnline,
-                        Online = chatView[ChatList.SelectedIndex].Online,
-                        Count = chatView[ChatList.SelectedIndex].CountUsers,
-                        CreatorId = chatView[ChatList.SelectedIndex].CreatorId
-                    };
-                }
+                    Id = chatView[ChatList.SelectedIndex].Id,
+                    UserName = chatView[ChatList.SelectedIndex].Name,
+                    IsOnline = chatView[ChatList.SelectedIndex].IsOnline,
+                    Online = chatView[ChatList.SelectedIndex].Online,
+                    Count = chatView[ChatList.SelectedIndex].CountUsers,
+                    CreatorId = chatView[ChatList.SelectedIndex].CreatorId
+                };
             }
         }
 
@@ -210,9 +213,14 @@ namespace ChatUi.Screens
         {
             if (FriendProfileView != null)
             {
-                FriendProfile.Visibility = Visibility.Visible;
-                FriendProfile.ProfileFriend.Visibility = Visibility.Visible;
-                FriendProfile.ViewFriend(FriendProfileView);
+                clientServerService_.SendAsync(new ClientOperationMessage
+                {
+                    Operation = ClientOperations.GetUser,
+                    JsonData = serializer.Serialize(new UserResponseModel
+                    {
+                        Id = FriendProfileView.Id
+                    })
+                });
             }
         }
 
@@ -246,7 +254,7 @@ namespace ChatUi.Screens
 
         private void DeleteChatButton_Click(object sender, RoutedEventArgs e)
         {
-            var currentChat = chats.FirstOrDefault(c => c.Id == ChatId);
+            var currentChat = chats[ChatId];
             clientServerService_.SendAsync(new ClientOperationMessage
             {
                 Operation = ClientOperations.CreateChat,
@@ -260,6 +268,8 @@ namespace ChatUi.Screens
                     }).ToList()
                 })
             });
+            chatView.RemoveAt(ChatId);
+            Itemsource();
         }
     }
 }
