@@ -137,6 +137,7 @@ namespace ChatUi
                         });
                     }
                     Chat._userReceiveModel = userReceiveModel;
+                    Chat.friend = Friend.friendViews;
                     break;
                 case 1: 
                     //friend

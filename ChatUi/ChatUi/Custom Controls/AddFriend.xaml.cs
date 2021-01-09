@@ -90,5 +90,10 @@ namespace ChatUi.Custom_Controls
                 JsonData = serializer.Serialize(friend)
             });
         }
+
+        private void ButtonMore_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

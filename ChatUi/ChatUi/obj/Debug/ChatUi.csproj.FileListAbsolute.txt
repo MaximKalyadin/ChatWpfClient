@@ -143,3 +143,9 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.exe
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.pdb
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddUsersInChat.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteUsersinChat.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\WindowCreateChat.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddUsersInChat.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteUsersinChat.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\WindowCreateChat.baml

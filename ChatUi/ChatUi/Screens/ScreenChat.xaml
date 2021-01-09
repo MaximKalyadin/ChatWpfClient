@@ -56,6 +56,43 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="PopupButtonUsersProfile" BasedOn="{StaticResource ResourceKey=ButtonPopupStyle}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="WhiteSmoke" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="OpenFriendProfileButtonImage" Source="/assets/popupbuttons/userprofileblack32px.png" Width="30" Height="30"/>
+                                <TextBlock Margin="10 5 0 0" Text="Посмотреть участников" Height="30" Background="Transparent" Foreground="{Binding ElementName=OpenFriendProfileButton, Path=Foreground}"/>
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                <Setter TargetName="OpenFriendProfileButtonImage" Property="Image.Source" Value="/assets/popupbuttons/userprofilewhite32px.png"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="17"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!--PopupButtonAddFriendToChatStyle-->
         <Style x:Key="PopupButtonAddFriendToChatStyle" BasedOn="{StaticResource ResourceKey=ButtonPopupStyle}" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -141,6 +178,43 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image x:Name="DeleteChatButtonImage" Source="/assets/popupbuttons/deletechatblack32px.png" Width="30" Height="30"/>
                                 <TextBlock Margin="10 5 0 0" Text="Удалить чат" Background="Transparent" Height="30" Foreground="{Binding ElementName=DeleteChatButton, Path=Foreground}"/>
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                <Setter TargetName="DeleteChatButtonImage" Property="Image.Source" Value="/assets/popupbuttons/deletechatwhite32px.png"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="17"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PopupButtonCkicChatStyle" BasedOn="{StaticResource ResourceKey=ButtonPopupStyle}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="WhiteSmoke" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="DeleteChatButtonImage" Source="/assets/popupbuttons/deletechatblack32px.png" Width="30" Height="30"/>
+                                <TextBlock Margin="10 5 0 0" Text="Покинуть чат" Background="Transparent" Height="30" Foreground="{Binding ElementName=DeleteChatButton, Path=Foreground}"/>
                                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </StackPanel>
                         </Border>
@@ -347,7 +421,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Add new" FontWeight="SemiBold" Margin="0,0,5,0" FontSize="14"
                                Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                    <Button Grid.Column="1" Style="{DynamicResource ButtonStyle}">
+                    <Button x:Name="ButtonAddChat" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Click="ButtonAddChat_Click">
                         <Button.Content>
                             <Image Source="/assets/plus.png" Stretch="Uniform" Width="15"/>
                         </Button.Content>
@@ -399,11 +473,10 @@
                                 <Border x:Name="PopupBorder" Background="WhiteSmoke" BorderThickness="1" CornerRadius="10" BorderBrush="Black" MouseLeave="PopupBorder_MouseLeave">
                                     <StackPanel Orientation="Vertical">
                                         <Button x:Name="OpenFriendProfileButton" Style="{StaticResource PopupButtonUserProfileStyle}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="OpenProfileFriend_Click"/>
-                                        <Separator/>
-                                        <Button x:Name="AddFriendToChatButton" Style="{StaticResource PopupButtonAddFriendToChatStyle}" Height="33" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="AddFriendToChatButton_Click"/>
-                                        <Button x:Name="RemoveFriendFromChatButton" Style="{StaticResource PopupButtonRemoveFriendFromChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="RemoveFriendFromChatButton_Click"/>
+                                        <Button x:Name="OpenUsersProfileButton" Style="{StaticResource PopupButtonUsersProfile}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="OpenUsersProfileButton_Click" />
                                         <Separator/>
                                         <Button x:Name="DeleteChatButton" Style="{StaticResource PopupButtonDeleteChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="DeleteChatButton_Click"/>
+                                        <Button x:Name="LeaveChatButton" Style="{StaticResource PopupButtonCkicChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="LeaveChatButton_Click"/>
                                         <Button x:Name="ClearChatButton" Style="{StaticResource PopupButtonClearChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="ClearChatButton_Click"/>
                                         <Button x:Name="CloseChatButton" Style="{StaticResource PopupButtonCloseChatStyle}" Height="40" Width="230" Margin="5 0 5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="CloseChat_Click"/>
                                     </StackPanel>

@@ -70,11 +70,17 @@
     <Compile Include="Custom Controls\AddFriend.xaml.cs">
       <DependentUpon>AddFriend.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\AddUsersInChat.xaml.cs">
+      <DependentUpon>AddUsersInChat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\Conversation.xaml.cs">
       <DependentUpon>Conversation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\DeleteFriend.xaml.cs">
       <DependentUpon>DeleteFriend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\DeleteUsersinChat.xaml.cs">
+      <DependentUpon>DeleteUsersinChat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\MenuListControl.xaml.cs">
       <DependentUpon>MenuListControl.xaml</DependentUpon>
@@ -101,11 +107,18 @@
       <DependentUpon>ScreenSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
+    <Compile Include="WindowCreateChat.xaml.cs">
+      <DependentUpon>WindowCreateChat.xaml</DependentUpon>
+    </Compile>
     <Page Include="AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Custom Controls\AddFriend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\AddUsersInChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Custom Controls\DeleteFriend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\DeleteUsersinChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\ScreenSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowCreateChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

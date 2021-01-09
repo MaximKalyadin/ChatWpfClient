@@ -34,6 +34,7 @@ namespace ChatUi.Screens
         List<ChatListViewModel> chatView = new List<ChatListViewModel>();
         public FriendProfileView FriendProfileView { get; set; }
         public UserReceiveModel _userReceiveModel { get; set; }
+        public List<AllUsersView> friend = new List<AllUsersView>();
         public int ChatId { get; set; }
         public bool IsChange = false;
         public ScreenChat()
@@ -54,6 +55,7 @@ namespace ChatUi.Screens
                     var data = serializer.Deserialize<UserReceiveModel>(operationResultInfo.JsonData as string);
                     FriendProfile.Visibility = Visibility.Visible;
                     FriendProfile.ProfileFriend.Visibility = Visibility.Visible;
+                    FriendProfile.Stackpanelfriend.Visibility = Visibility.Visible;
                     FriendProfile.ViewFriend(data);
                 }
                 else
@@ -189,18 +191,23 @@ namespace ChatUi.Screens
             if (FriendProfileView.Count > 2)
             {
                 OpenFriendProfileButton.Visibility = Visibility.Collapsed;
+                OpenUsersProfileButton.Visibility = Visibility.Visible;
                 if (FriendProfileView.CreatorId == _userReceiveModel.Id)
                 {
-                    RemoveFriendFromChatButton.Visibility = Visibility.Visible;
+                    LeaveChatButton.Visibility = Visibility.Collapsed;
+                    DeleteChatButton.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    RemoveFriendFromChatButton.Visibility = Visibility.Collapsed;
+                    LeaveChatButton.Visibility = Visibility.Visible;
+                    DeleteChatButton.Visibility = Visibility.Collapsed; ;
                 }
             } else
             {
                 OpenFriendProfileButton.Visibility = Visibility.Visible;
-                RemoveFriendFromChatButton.Visibility = Visibility.Collapsed;
+                OpenUsersProfileButton.Visibility = Visibility.Collapsed;
+                LeaveChatButton.Visibility = Visibility.Collapsed;
+                DeleteChatButton.Visibility = Visibility.Visible;
             }
         }
 
@@ -270,6 +277,35 @@ namespace ChatUi.Screens
             });
             chatView.RemoveAt(ChatId);
             Itemsource();
+        }
+
+        private void LeaveChatButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void OpenUsersProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            var users = new List<AllUsersView>();
+            foreach (var el in chats[ChatId].ChatUsers)
+            {
+                users.Add(new AllUsersView
+                {
+                    Id = el.Id,
+                    UserName = el.UserName,
+                    IsOnline = (el.IsOnline) ? "Online" : "Offline",
+                    Online = el.IsOnline,
+                    Picture = el.Picture
+                });
+            }
+            WindowCreateChat createChat = new WindowCreateChat(null, users, _userReceiveModel);
+            createChat.Show();
+        }
+
+        private void ButtonAddChat_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel);
+            createChat.Show();
         }
     }
 }

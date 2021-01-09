@@ -74,7 +74,7 @@ namespace ClientToServerApi
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось установить соединение с сервером!");
+               MessageBox.Show("Не удалось установить соединение с сервером!");
             }
 
             throw new Exception("Не удалось установить соединение с сервером!");
@@ -98,14 +98,14 @@ namespace ClientToServerApi
         {
             try
             {
-                byte[] buffer = new byte[256];
+                byte[] buffer = new byte[1024];
                 
                 while (true)
                 {
                     StringBuilder stringBuilder = new StringBuilder();
                     do
                     {
-                        int count = networkStream_.Read(buffer, 0, 256);
+                        int count = networkStream_.Read(buffer, 0, 1024);
                         stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, count));
                     } while (networkStream_.DataAvailable);
 

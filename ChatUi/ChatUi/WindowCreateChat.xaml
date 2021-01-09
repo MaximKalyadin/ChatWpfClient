@@ -1,0 +1,100 @@
+﻿<Window x:Class="ChatUi.WindowCreateChat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Custom_Controls="clr-namespace:ChatUi.Custom_Controls"
+        xmlns:local="clr-namespace:ChatUi"
+        mc:Ignorable="d"
+        Title="Chat" Height="500" Width="500">
+    <Window.Background>
+        <ImageBrush ImageSource="/Assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="ButtonStyleFriendBorder" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#2A2E4D"/>
+            <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#2A2E4D"/>
+                                <Setter Property="FontSize" Value="22"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="30,0,30,0" Grid.Row="0" x:Name="GridSearch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="Transparent" Height="Auto" Visibility="{Binding Visbility}">
+                <Border Background="#F8F6F7" Height="48" CornerRadius="25" HorizontalAlignment="Stretch">
+                    <Grid Height="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Assets/search.png" Width="25" Stretch="Uniform"/>
+                        <TextBox Grid.Column="1" x:Name ="searchQuery" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Left"
+                                       BorderThickness="0" Background="Transparent" Margin="0,0,15,0"/>
+                        <TextBlock Text="Enter to name chat" Grid.Column="1" FontWeight="SemiBold" 
+                                       FontSize="16" HorizontalAlignment="Left" TextAlignment="Left"
+                                       VerticalAlignment="Center" Foreground="#B7B5B8" IsHitTestVisible="False">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=searchQuery}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </Border>
+            </Border>
+            <Button x:Name="ButtonCreateChat" Grid.Column="2" Content="Создать" Margin="0 2 0 0" Style="{StaticResource ButtonStyleFriendBorder}"  Click="ButtonCreateChat_Click"/>
+        </Grid>
+        <TextBlock x:Name="TextBlockFriends" Grid.Row="1" Text="Все ваши друзья:" FontWeight="ExtraBold" FontSize="15" Foreground="White"/>
+        <Custom_Controls:AddUsersInChat x:Name="FriendListAdd" Grid.Row="1" Height="200" ListBoxSelectionChange="FriendListAdd_ListBoxSelectionChange"/>
+        <TextBlock x:Name="TextBlockFriendsInChat" Grid.Row="2" Text="Друзья в чате:" FontWeight="ExtraBold" FontSize="15" Foreground="White"/>
+        <Custom_Controls:DeleteUsersinChat x:Name="FriendListInChat" Grid.Row="2" ListBoxSelectionChange="FriendListInChat_ListBoxSelectionChange"/>
+
+    </Grid>
+</Window>
