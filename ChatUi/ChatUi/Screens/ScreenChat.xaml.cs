@@ -44,6 +44,30 @@ namespace ChatUi.Screens
             clientServerService_.AddListener(ListenerType.ChatListListener,ChatListListener);
             clientServerService_.AddListener(ListenerType.ChatListDeleteListener, DeleteChatList);
             clientServerService_.AddListener(ListenerType.UserInfoListener, UserInfo);
+            clientServerService_.AddListener(ListenerType.ChatsMessagesListener, ChatMessage);
+            clientServerService_.AddListener(ListenerType.ChatsMessagesDeleteListener, UserMessageDelete);
+        }
+
+        public void ChatMessage(OperationResultInfo operationResultInfo)
+        {
+            Dispatcher.InvokeAsync(() =>
+            {
+                if (operationResultInfo.JsonData != null)
+                {
+
+                }
+            });
+        }
+
+        public void UserMessageDelete(OperationResultInfo operationResultInfo)
+        {
+            Dispatcher.InvokeAsync(() =>
+            {
+                if (operationResultInfo.JsonData != null)
+                {
+
+                }
+            });
         }
 
         public void UserInfo(OperationResultInfo operationResultInfo)
@@ -241,19 +265,6 @@ namespace ChatUi.Screens
             Itemsource();
         }
 
-        private void AddFriendToChatButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void RemoveFriendFromChatButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (FriendProfileView.CreatorId == _userReceiveModel.Id)
-            {
-
-            }
-        }
-
         private void ClearChatButton_Click(object sender, RoutedEventArgs e)
         {
             //in developing
@@ -281,7 +292,23 @@ namespace ChatUi.Screens
 
         private void LeaveChatButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            var user = new List<ChatUserResponseModel>();
+            user.Add(new ChatUserResponseModel
+            {
+                UserId = _userReceiveModel.Id,
+                ChatId = ChatId
+            });
+            clientServerService_.SendAsync(new ClientOperationMessage
+            {
+                Operation = ClientOperations.UpdateChat,
+                JsonData = serializer.Serialize(new ChatResponseModel
+                {
+                    chatUsers = user,
+                    id = ChatId
+                })
+            });
+            chatView.RemoveAt(ChatId);
+            Itemsource();
         }
 
         private void OpenUsersProfileButton_Click(object sender, RoutedEventArgs e)
@@ -298,13 +325,13 @@ namespace ChatUi.Screens
                     Picture = el.Picture
                 });
             }
-            WindowCreateChat createChat = new WindowCreateChat(null, users, _userReceiveModel);
+            WindowCreateChat createChat = new WindowCreateChat(null, users, _userReceiveModel, FriendProfileView.CreatorId, ChatId);
             createChat.Show();
         }
 
         private void ButtonAddChat_Click(object sender, RoutedEventArgs e)
         {
-            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel);
+            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel,FriendProfileView.CreatorId,ChatId);
             createChat.Show();
         }
     }

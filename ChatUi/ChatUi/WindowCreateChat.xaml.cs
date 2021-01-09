@@ -31,7 +31,11 @@ namespace ChatUi
         public UserReceiveModel _userReceiveModel { get; set; }
         public List<AllUsersView> friend = new List<AllUsersView>();
         public List<AllUsersView> usersInChat = new List<AllUsersView>();
-        public WindowCreateChat(List<AllUsersView> friend, List<AllUsersView> usersInChat, UserReceiveModel _userReceiveModel)
+        public int CreatorId { get; set; }
+        public int ChatId { get; set; }
+        public bool IsCreateChat = false;
+        public bool IsDeleteChat = false;
+        public WindowCreateChat(List<AllUsersView> friend, List<AllUsersView> usersInChat, UserReceiveModel _userReceiveModel, int CreatorId, int ChatId)
         {
             InitializeComponent();
             clientServerService_ = ClientServerService.GetInstanse();
@@ -44,12 +48,18 @@ namespace ChatUi
                 GridSearch.Visibility = Visibility.Collapsed;
                 TextBlockFriends.Visibility = Visibility.Collapsed;
                 FriendListAdd.Visibility = Visibility.Collapsed;
+                IsDeleteChat = true;
             }
             
             if (usersInChat != null)
             {
                 this.usersInChat = usersInChat;
+            } else
+            {
+                IsCreateChat = true;
             }
+            this.CreatorId = CreatorId;
+            this.ChatId = ChatId;
             this._userReceiveModel = _userReceiveModel;
             Itemsource();
         }
@@ -97,6 +107,29 @@ namespace ChatUi
 
         private void FriendListInChat_ListBoxSelectionChange(object sender, EventArgs e)
         {
+            
+            if (IsDeleteChat && CreatorId == _userReceiveModel.Id)
+            {
+                var users = new List<ChatUserResponseModel>();
+                users.Add(new ChatUserResponseModel
+                {
+                    ChatId = ChatId,
+                    UserId = usersInChat[FriendListInChat.SelectIndexItem].Id
+                });
+                clientServerService_.SendAsync(new ClientOperationMessage
+                {
+                    Operation = ClientOperations.UpdateChat,
+                    JsonData = serializer.Serialize(new ChatResponseModel
+                    {
+                        id = ChatId,
+                        chatUsers = users
+                    })
+                });
+            }
+            else if(CreatorId != _userReceiveModel.Id)
+            {
+                MessageBox.Show("Вы не являетесь создателем чата и не можете удалить пользователя из него!");
+            }
             usersInChat.RemoveAt(FriendListInChat.SelectIndexItem);
             Itemsource();
         }
