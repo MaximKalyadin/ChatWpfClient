@@ -3,6 +3,7 @@ using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,7 +32,7 @@ namespace ChatUi
         public UserReceiveModel userReceiveModel { get; set; }
         public UserResponseModel UserResponseModel { get; set; }
         public readonly ClientServerService clientServerService_;
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         public MainWindow(UserReceiveModel model)
         {
             InitializeComponent();

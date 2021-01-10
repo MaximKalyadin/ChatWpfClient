@@ -3,6 +3,7 @@ using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.NotificationModels;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace ChatUi.Screens
     /// </summary>
     public partial class ScreenNotification : UserControl
     {
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         private readonly ClientServerService clientServerService_;
         List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();
         public UserReceiveModel _userReceiveModel { get; set; }
@@ -51,7 +52,7 @@ namespace ChatUi.Screens
                 {
                     if (operationResultInfo.JsonData != null)
                     {
-                        var notifi = serializer.Deserialize<NotificationReceiveModel>(operationResultInfo.JsonData as string);
+                        var notifi = serializer.Deserialize<NotificationReceiveModel>(operationResultInfo.JsonData.ToString());
                         notifications.Add(notifi);
                     }
                 }
@@ -59,7 +60,7 @@ namespace ChatUi.Screens
                 {
                     if (operationResultInfo.JsonData != null)
                     {
-                        notifications = serializer.Deserialize<List<NotificationReceiveModel>>(operationResultInfo.JsonData as string);
+                        notifications = serializer.Deserialize<List<NotificationReceiveModel>>(operationResultInfo.JsonData.ToString());
                         NotficationListbox.notifications = notifications;
                         IsChange = true;
                     }

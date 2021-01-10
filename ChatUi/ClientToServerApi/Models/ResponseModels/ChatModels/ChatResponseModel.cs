@@ -6,12 +6,16 @@ namespace ClientToServerApi.Models.ResponseModels.ChatModels
 {
 	public class ChatResponseModel 
 	{
-		public int id { get; set; }
-		public string chatName { get; set; }
-		public int creatorId { get; set; }
-		public DateTime dateOfCreation { get; set; }
-		public List<ChatUserResponseModel> chatUsers { get; set; }
+        public int? Id { get; set; }
 
-	}
+        public string ChatName { get; set; }
+
+        public int CreatorId { get; set; }
+
+        public DateTime DateOfCreation { get; set; }
+
+        public List<ChatUserResponseModel> ChatUsers { get; set; }
+
+    }
 
 }

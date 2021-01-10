@@ -30,7 +30,10 @@ namespace ClientToServerApi.Models.Enums.Transmissions
 
         //notifications
         UpdateNotification,
-        GetNotifications
+        GetNotifications,
+
+        //encoding
+        SendEncodingPublicKey
     }
 
 }

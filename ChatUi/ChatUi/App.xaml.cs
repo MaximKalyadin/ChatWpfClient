@@ -19,7 +19,6 @@ namespace ChatUi
             ClientServerService.SetApiConfig("25.68.135.116", "8668");
             var authorizationWindow = new AuthorizationWindow();
             authorizationWindow.Show();
-
         }
     }
 }

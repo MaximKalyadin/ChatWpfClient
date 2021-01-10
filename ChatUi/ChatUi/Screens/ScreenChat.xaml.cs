@@ -7,6 +7,7 @@ using ClientToServerApi.Models.ResponseModels.ChatModels;
 using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace ChatUi.Screens
     public partial class ScreenChat : UserControl
     {
         private readonly ClientServerService clientServerService_;
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         List<ChatReceiveModel> chats = new List<ChatReceiveModel>();
         List<ChatListViewModel> chatView = new List<ChatListViewModel>();
         public FriendProfileView FriendProfileView { get; set; }
@@ -76,7 +77,7 @@ namespace ChatUi.Screens
             {
                 if (operationResultInfo.JsonData != null)
                 {
-                    var data = serializer.Deserialize<UserReceiveModel>(operationResultInfo.JsonData as string);
+                    var data = serializer.Deserialize<UserReceiveModel>(operationResultInfo.JsonData.ToString());
                     FriendProfile.Visibility = Visibility.Visible;
                     FriendProfile.ProfileFriend.Visibility = Visibility.Visible;
                     FriendProfile.Stackpanelfriend.Visibility = Visibility.Visible;
@@ -141,12 +142,22 @@ namespace ChatUi.Screens
                 {
                     if (operationResultInfo.JsonData != null)
                     {
-                        var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData as string);
+                        var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData.ToString());
                         var chat = chats.FirstOrDefault(c => c.Id == data.Id
                         || c.ChatName == data.ChatName && c.CreatorId == data.CreatorId && c.CountUsers == data.CountUsers);
                         if (chat == null)
                         {
                             chats.Add(data);
+                        }
+                        else
+                        {
+                            for(int i = 0; i < chats.Count; i++)
+                            {
+                                if (chats[i].Id == chat.Id)
+                                {
+                                    chats[i] = data;
+                                }
+                            }
                         }
                     }
                 }
@@ -154,7 +165,7 @@ namespace ChatUi.Screens
                 {
                     if (operationResultInfo.JsonData != null)
                     {
-                        var data = serializer.Deserialize<List<ChatReceiveModel>>(operationResultInfo.JsonData as string);
+                        var data = serializer.Deserialize<List<ChatReceiveModel>>(operationResultInfo.JsonData.ToString());
                         foreach (var el in data)
                         {
                             var chat = chats.FirstOrDefault(c => c.Id == el.Id);
@@ -187,7 +198,7 @@ namespace ChatUi.Screens
             {
                 if (operationResultInfo.JsonData != null)
                 {
-                    var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData as string);
+                    var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData.ToString());
                     var delete = chats.FirstOrDefault(c => c.Id == data.Id);
                     if (delete != null)
                     {
@@ -298,11 +309,11 @@ namespace ChatUi.Screens
             var currentChat = chats[ChatId];
             clientServerService_.SendAsync(new ClientOperationMessage
             {
-                Operation = ClientOperations.CreateChat,
+                Operation = ClientOperations.DeleteChat,
                 JsonData = serializer.Serialize(new ChatResponseModel
                 {
-                    id = ChatId,
-                    chatUsers = currentChat.ChatUsers.Select(cu => new ChatUserResponseModel
+                    Id = currentChat.Id,
+                    ChatUsers = currentChat.ChatUsers.Select(cu => new ChatUserResponseModel
                     {
                         ChatId = currentChat.Id,
                         UserId = cu.Id
@@ -320,19 +331,22 @@ namespace ChatUi.Screens
             var user = new List<ChatUserResponseModel>();
             foreach(var el in chats[ChatId].ChatUsers)
             {
-                user.Add(new ChatUserResponseModel
+                if (el.Id != _userReceiveModel.Id)
                 {
-                    ChatId = ChatId,
-                    UserId = el.Id
-                });
+                    user.Add(new ChatUserResponseModel
+                    {
+                        ChatId = chats[ChatId].Id,
+                        UserId = el.Id
+                    });
+                }
             }
             clientServerService_.SendAsync(new ClientOperationMessage
             {
                 Operation = ClientOperations.UpdateChat,
                 JsonData = serializer.Serialize(new ChatResponseModel
                 {
-                    chatUsers = user,
-                    id = ChatId
+                    ChatUsers = user,
+                    Id = chats[ChatId].Id
                 })
             });
             chatView.RemoveAt(ChatId);
@@ -357,13 +371,13 @@ namespace ChatUi.Screens
                     });
                 }
             }
-            WindowCreateChat createChat = new WindowCreateChat(null, users, _userReceiveModel, FriendProfileView.CreatorId, ChatId);
+            WindowCreateChat createChat = new WindowCreateChat(null, users, _userReceiveModel, FriendProfileView.CreatorId, chats[ChatId].Id);
             createChat.Show();
         }
 
         private void ButtonAddChat_Click(object sender, RoutedEventArgs e)
         {
-            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel,null,ChatId);
+            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel,null, null);
             createChat.Show();
         }
 
@@ -384,7 +398,7 @@ namespace ChatUi.Screens
                     });
                 }
             }
-            WindowCreateChat windowCreate = new WindowCreateChat(friend, users, _userReceiveModel, FriendProfileView.CreatorId, ChatId);
+            WindowCreateChat windowCreate = new WindowCreateChat(friend, users, _userReceiveModel, FriendProfileView.CreatorId, chats[ChatId].Id);
             windowCreate.Show();
         }
     }

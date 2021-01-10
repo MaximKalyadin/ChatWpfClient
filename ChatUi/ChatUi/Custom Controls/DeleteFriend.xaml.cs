@@ -4,6 +4,7 @@ using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModels.FriendModels;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,7 +31,7 @@ namespace ChatUi.Custom_Controls
         public List<AllUsersView> _friends = new List<AllUsersView>();
         public UserReceiveModel _userReceiveModel { get; set; }
         private readonly ClientServerService clientServerService_;
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         public DeleteFriend()
         {
             InitializeComponent();

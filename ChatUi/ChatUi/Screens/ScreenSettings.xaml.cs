@@ -4,6 +4,7 @@ using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
+using ClientToServerApi.Serializer;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace ChatUi.Screens
     public partial class ScreenSettings : System.Windows.Controls.UserControl
     {
         private readonly ClientServerService clientServerService_;
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         public UserReceiveModel _userReceiveModel { get; set; }
         public UserResponseModel _userResponseModel { get; set; }
         public bool IsChange = false;

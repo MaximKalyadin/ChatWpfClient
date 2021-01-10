@@ -1,5 +1,6 @@
 ﻿using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.TransmissionModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -15,7 +16,7 @@ namespace ClientToServerApi
         private readonly TcpClient tcpClient_;
         private readonly NetworkStream networkStream_;
         private readonly DataManager dataManager_;
-        private Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         private static Thread receiveThread_;
         private static ClientServerService clientServerService_;
         private static string ServerIp { set; get; }
@@ -28,7 +29,7 @@ namespace ClientToServerApi
             networkStream_ = Connect(ServerIp, ServerPort);
         }
 
-        #region DataManagerRegion
+        #region DataManagerRegion 
         public void AddListener(ListenerType key, Handler listener) => dataManager_.AddListener(key, listener);
         public void RemoveListener(ListenerType key) => dataManager_.RemoveListener(key);
         #endregion

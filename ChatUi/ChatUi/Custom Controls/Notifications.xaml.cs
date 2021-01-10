@@ -4,6 +4,7 @@ using ClientToServerApi.Models.ReceivedModels.NotificationModels;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModels.NotificationsModels;
 using ClientToServerApi.Models.TransmissionModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace ChatUi.Custom_Controls
     /// </summary>
     public partial class Notifications : UserControl
     {
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         private readonly ClientServerService clientServerService_;
         public UserReceiveModel _userReceiveModel { get; set; }
         public List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();

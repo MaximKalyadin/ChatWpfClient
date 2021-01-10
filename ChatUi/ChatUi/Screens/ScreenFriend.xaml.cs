@@ -3,6 +3,7 @@ using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
+using ClientToServerApi.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +29,7 @@ namespace ChatUi.Screens
         public List<AllUsersView> usersViews = new List<AllUsersView>();
         public List<AllUsersView> friendViews = new List<AllUsersView>();
         public UserReceiveModel _userReceiveModel { get; set; }
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         private readonly ClientServerService clientServerService_;
         public ScreenFriend()
         {
@@ -91,7 +92,7 @@ namespace ChatUi.Screens
             {
                 if (operationResultInfo.JsonData != null)
                 {
-                    var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData as string);
+                    var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData.ToString());
                     foreach (var el in friendViews)
                     {
                         if (el.Id == userListReceiveModels.UserId)
@@ -114,7 +115,7 @@ namespace ChatUi.Screens
                 {
                     if (operationResultInfo.JsonData != null)
                     {
-                        var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData as string);
+                        var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData.ToString());
                         AllUsersView usersView = new AllUsersView();
                         usersView.Id = userListReceiveModels.UserId;
                         usersView.UserName = userListReceiveModels.UserName;
@@ -149,7 +150,7 @@ namespace ChatUi.Screens
                 {
                     if (operationResultInfo.JsonData != null)
                     {
-                        var userListReceiveModels = serializer.Deserialize<List<UserListReceiveModel>>(operationResultInfo.JsonData as string);
+                        var userListReceiveModels = serializer.Deserialize<List<UserListReceiveModel>>(operationResultInfo.JsonData.ToString());
                         foreach (var el in userListReceiveModels)
                         {
                             AllUsersView usersView = new AllUsersView();
@@ -189,7 +190,7 @@ namespace ChatUi.Screens
             {
                 if (operationResultInfo.JsonData != null)
                 {
-                    var userListReceiveModels = serializer.Deserialize<List<UserListReceiveModel>>(operationResultInfo.JsonData as string);
+                    var userListReceiveModels = serializer.Deserialize<List<UserListReceiveModel>>(operationResultInfo.JsonData.ToString());
                     foreach (var el in userListReceiveModels)
                     {
                         AllUsersView usersView = new AllUsersView();

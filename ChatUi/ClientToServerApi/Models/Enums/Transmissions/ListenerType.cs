@@ -18,7 +18,9 @@ namespace ClientToServerApi.Models.Enums.Transmissions
         FriendListListener,
         FriendListDeleteListener,
 
-        NotificationListListener
+        NotificationListListener,
+
+        EncodingListener
     }
 
 }

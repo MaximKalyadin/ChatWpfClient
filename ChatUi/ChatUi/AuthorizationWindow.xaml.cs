@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
+using ClientToServerApi.Serializer;
 
 namespace ChatUi
 {
@@ -18,7 +19,7 @@ namespace ChatUi
     public partial class AuthorizationWindow : Window
     {
         private readonly ClientServerService clientServerService_;
-        static Serializer serializer = new Serializer();
+        static JsonStringSerializer serializer = new JsonStringSerializer();
         public AuthorizationWindow()
         {
             
@@ -67,7 +68,7 @@ namespace ChatUi
                 }
                 else if (string.IsNullOrEmpty(data.ErrorInfo))
                 {
-                    MainWindow mainWindow = new MainWindow(serializer.Deserialize<UserReceiveModel>(data.JsonData as string));
+                    MainWindow mainWindow = new MainWindow(serializer.Deserialize<UserReceiveModel>(data.JsonData.ToString()));
                     mainWindow.Show();
                     Close();
                     ///serializer.Deserialize<UserReceiveModel>(data.JsonData as string)
