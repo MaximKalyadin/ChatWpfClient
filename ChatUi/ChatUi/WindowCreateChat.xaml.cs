@@ -31,11 +31,12 @@ namespace ChatUi
         public UserReceiveModel _userReceiveModel { get; set; }
         public List<AllUsersView> friend = new List<AllUsersView>();
         public List<AllUsersView> usersInChat = new List<AllUsersView>();
-        public int CreatorId { get; set; }
+        public int? CreatorId { get; set; }
         public int ChatId { get; set; }
         public bool IsCreateChat = false;
         public bool IsDeleteChat = false;
-        public WindowCreateChat(List<AllUsersView> friend, List<AllUsersView> usersInChat, UserReceiveModel _userReceiveModel, int CreatorId, int ChatId)
+        public bool IsAddFriend = false;
+        public WindowCreateChat(List<AllUsersView> friend, List<AllUsersView> usersInChat, UserReceiveModel _userReceiveModel, int? CreatorId, int ChatId)
         {
             InitializeComponent();
             clientServerService_ = ClientServerService.GetInstanse();
@@ -50,13 +51,17 @@ namespace ChatUi
                 FriendListAdd.Visibility = Visibility.Collapsed;
                 IsDeleteChat = true;
             }
-            
             if (usersInChat != null)
             {
                 this.usersInChat = usersInChat;
-            } else
+            } 
+            else
             {
                 IsCreateChat = true;
+            }
+            if (friend != null && usersInChat != null)
+            {
+                IsAddFriend = true;
             }
             this.CreatorId = CreatorId;
             this.ChatId = ChatId;
@@ -74,47 +79,94 @@ namespace ChatUi
 
         private void ButtonCreateChat_Click(object sender, RoutedEventArgs e)
         {
-            var users = new List<ChatUserResponseModel>();
-            foreach(var el in usersInChat)
+            if (string.IsNullOrEmpty(searchQuery.Text))
             {
+                searchQuery.Text = "Ведите название чата!";
+                searchQuery.Foreground = new SolidColorBrush(Color.FromRgb(255,0,0));
+                return;
+            }
+            if (IsCreateChat)
+            {
+                var users = new List<ChatUserResponseModel>();
+                foreach (var el in usersInChat)
+                {
+                    users.Add(new ChatUserResponseModel
+                    {
+                        UserId = el.Id
+                    });
+                }
                 users.Add(new ChatUserResponseModel
                 {
-                    UserId = el.Id
+                    UserId = _userReceiveModel.Id
+                });
+                clientServerService_.SendAsync(new ClientOperationMessage
+                {
+                    Operation = ClientOperations.CreateChat,
+                    JsonData = serializer.Serialize(new ChatResponseModel
+                    {
+                        chatName = searchQuery.Text,
+                        dateOfCreation = DateTime.Now,
+                        creatorId = _userReceiveModel.Id,
+                        chatUsers = users
+                    })
+                });
+            } else if (IsAddFriend)
+            {
+                var users = new List<ChatUserResponseModel>();
+                foreach(var user in usersInChat)
+                {
+                    users.Add(new ChatUserResponseModel
+                    {
+                        UserId = user.Id,
+                        ChatId = ChatId
+                    });
+                }
+                users.Add(new ChatUserResponseModel
+                {
+                    UserId = _userReceiveModel.Id,
+                    ChatId = ChatId
+                });
+                clientServerService_.SendAsync(new ClientOperationMessage
+                {
+                    Operation = ClientOperations.UpdateChat,
+                    JsonData = serializer.Serialize(new ChatResponseModel
+                    {
+                        chatName = searchQuery.Text,
+                        creatorId = _userReceiveModel.Id,
+                        chatUsers = users,
+                        dateOfCreation = DateTime.Now
+                    })
                 });
             }
-            users.Add(new ChatUserResponseModel
-            {
-                UserId = _userReceiveModel.Id
-            });
-            clientServerService_.SendAsync(new ClientOperationMessage
-            {
-                Operation = ClientOperations.CreateChat,
-                JsonData = serializer.Serialize(new ChatResponseModel
-                {
-                    chatName = searchQuery.Text,
-                    dateOfCreation = DateTime.Now,
-                    creatorId = _userReceiveModel.Id,
-                    chatUsers = users
-                })
-            });
+            this.Close();
         }
 
         private void FriendListAdd_ListBoxSelectionChange(object sender, EventArgs e)
         {
-            usersInChat.Add(friend[(int)FriendListAdd.SelectIndexItem]);
+            var user = usersInChat.FirstOrDefault(c => c.Id == friend[(int)FriendListAdd.SelectIndexItem].Id);
+            if (user == null && IsCreateChat)
+            {
+                usersInChat.Add(friend[(int)FriendListAdd.SelectIndexItem]);
+            } else if (user == null && IsAddFriend && CreatorId == _userReceiveModel.Id)
+            {
+                usersInChat.Add(friend[(int)FriendListAdd.SelectIndexItem]);
+            }
+            else
+            {
+                MessageBox.Show("Вы не являетесь создателем чата и не можете добавить в него людей!");
+            }
             Itemsource();
         }
 
         private void FriendListInChat_ListBoxSelectionChange(object sender, EventArgs e)
         {
-            
-            if (IsDeleteChat && CreatorId == _userReceiveModel.Id)
+            if (IsDeleteChat && CreatorId == _userReceiveModel.Id && FriendListInChat.SelectIndexItem != null)
             {
                 var users = new List<ChatUserResponseModel>();
                 users.Add(new ChatUserResponseModel
                 {
                     ChatId = ChatId,
-                    UserId = usersInChat[FriendListInChat.SelectIndexItem].Id
+                    UserId = usersInChat[(int)FriendListInChat.SelectIndexItem].Id
                 });
                 clientServerService_.SendAsync(new ClientOperationMessage
                 {
@@ -125,12 +177,14 @@ namespace ChatUi
                         chatUsers = users
                     })
                 });
+                usersInChat.RemoveAt((int)FriendListInChat.SelectIndexItem);
+                FriendListInChat.SelectIndexItem = null;
             }
-            else if(CreatorId != _userReceiveModel.Id)
+            else if(CreatorId != _userReceiveModel.Id && FriendListInChat.SelectIndexItem != null)
             {
                 MessageBox.Show("Вы не являетесь создателем чата и не можете удалить пользователя из него!");
-            }
-            usersInChat.RemoveAt(FriendListInChat.SelectIndexItem);
+                FriendListInChat.SelectIndexItem = null;
+            } 
             Itemsource();
         }
     }

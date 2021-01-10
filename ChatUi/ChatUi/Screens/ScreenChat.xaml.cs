@@ -137,23 +137,39 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
-
-                if (operationResultInfo.JsonData != null)
+                try
                 {
-                    var data = serializer.Deserialize<List<ChatReceiveModel>>(operationResultInfo.JsonData as string);
-                    foreach(var el in data)
+                    if (operationResultInfo.JsonData != null)
                     {
-                        var chat = chats.FirstOrDefault(c => c.Id == el.Id);
+                        var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData as string);
+                        var chat = chats.FirstOrDefault(c => c.Id == data.Id
+                        || c.ChatName == data.ChatName && c.CreatorId == data.CreatorId && c.CountUsers == data.CountUsers);
                         if (chat == null)
                         {
-                            chats.Add(el);
-                        } else
+                            chats.Add(data);
+                        }
+                    }
+                }
+                catch
+                {
+                    if (operationResultInfo.JsonData != null)
+                    {
+                        var data = serializer.Deserialize<List<ChatReceiveModel>>(operationResultInfo.JsonData as string);
+                        foreach (var el in data)
                         {
-                            for (int i = 0; i < chats.Count; i++)
+                            var chat = chats.FirstOrDefault(c => c.Id == el.Id);
+                            if (chat == null)
                             {
-                                if (el.Id == chats[i].Id)
+                                chats.Add(el);
+                            }
+                            else
+                            {
+                                for (int i = 0; i < chats.Count; i++)
                                 {
-                                    chats[i] = el;
+                                    if (el.Id == chats[i].Id)
+                                    {
+                                        chats[i] = el;
+                                    }
                                 }
                             }
                         }
@@ -206,6 +222,10 @@ namespace ChatUi.Screens
                     Count = chatView[ChatList.SelectedIndex].CountUsers,
                     CreatorId = chatView[ChatList.SelectedIndex].CreatorId
                 };
+                if (FriendProfileView.Count > 2)
+                {
+                    FriendProfile.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
@@ -220,11 +240,13 @@ namespace ChatUi.Screens
                 {
                     LeaveChatButton.Visibility = Visibility.Collapsed;
                     DeleteChatButton.Visibility = Visibility.Visible;
+                    AddFriendsInChatButton.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     LeaveChatButton.Visibility = Visibility.Visible;
-                    DeleteChatButton.Visibility = Visibility.Collapsed; ;
+                    DeleteChatButton.Visibility = Visibility.Collapsed;
+                    AddFriendsInChatButton.Visibility = Visibility.Collapsed;
                 }
             } else
             {
@@ -232,6 +254,7 @@ namespace ChatUi.Screens
                 OpenUsersProfileButton.Visibility = Visibility.Collapsed;
                 LeaveChatButton.Visibility = Visibility.Collapsed;
                 DeleteChatButton.Visibility = Visibility.Visible;
+                AddFriendsInChatButton.Visibility = Visibility.Visible;
             }
         }
 
@@ -286,18 +309,23 @@ namespace ChatUi.Screens
                     }).ToList()
                 })
             });
+
             chatView.RemoveAt(ChatId);
+            chats.RemoveAt(ChatId);
             Itemsource();
         }
 
         private void LeaveChatButton_Click(object sender, RoutedEventArgs e)
         {
             var user = new List<ChatUserResponseModel>();
-            user.Add(new ChatUserResponseModel
+            foreach(var el in chats[ChatId].ChatUsers)
             {
-                UserId = _userReceiveModel.Id,
-                ChatId = ChatId
-            });
+                user.Add(new ChatUserResponseModel
+                {
+                    ChatId = ChatId,
+                    UserId = el.Id
+                });
+            }
             clientServerService_.SendAsync(new ClientOperationMessage
             {
                 Operation = ClientOperations.UpdateChat,
@@ -308,6 +336,7 @@ namespace ChatUi.Screens
                 })
             });
             chatView.RemoveAt(ChatId);
+            chats.RemoveAt(ChatId);
             Itemsource();
         }
 
@@ -316,14 +345,17 @@ namespace ChatUi.Screens
             var users = new List<AllUsersView>();
             foreach (var el in chats[ChatId].ChatUsers)
             {
-                users.Add(new AllUsersView
+                if (el.Id != _userReceiveModel.Id)
                 {
-                    Id = el.Id,
-                    UserName = el.UserName,
-                    IsOnline = (el.IsOnline) ? "Online" : "Offline",
-                    Online = el.IsOnline,
-                    Picture = el.Picture
-                });
+                    users.Add(new AllUsersView
+                    {
+                        Id = el.Id,
+                        UserName = el.UserName,
+                        IsOnline = (el.IsOnline) ? "Online" : "Offline",
+                        Online = el.IsOnline,
+                        Picture = el.Picture
+                    });
+                }
             }
             WindowCreateChat createChat = new WindowCreateChat(null, users, _userReceiveModel, FriendProfileView.CreatorId, ChatId);
             createChat.Show();
@@ -331,8 +363,29 @@ namespace ChatUi.Screens
 
         private void ButtonAddChat_Click(object sender, RoutedEventArgs e)
         {
-            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel,FriendProfileView.CreatorId,ChatId);
+            WindowCreateChat createChat = new WindowCreateChat(friend,null,_userReceiveModel,null,ChatId);
             createChat.Show();
+        }
+
+        private void AddFriendsInChatButton_Click(object sender, RoutedEventArgs e)
+        {
+            var users = new List<AllUsersView>();
+            foreach(var el in chats[ChatId].ChatUsers)
+            {
+                if (el.Id != _userReceiveModel.Id)
+                {
+                    users.Add(new AllUsersView
+                    {
+                        Id = el.Id,
+                        UserName = el.UserName,
+                        IsOnline = (el.IsOnline) ? "Online" : "Offline",
+                        Online = el.IsOnline,
+                        Picture = el.Picture
+                    });
+                }
+            }
+            WindowCreateChat windowCreate = new WindowCreateChat(friend, users, _userReceiveModel, FriendProfileView.CreatorId, ChatId);
+            windowCreate.Show();
         }
     }
 }

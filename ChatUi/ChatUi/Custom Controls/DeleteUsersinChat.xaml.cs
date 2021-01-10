@@ -26,10 +26,10 @@ namespace ChatUi.Custom_Controls
             ListBoxDeleteUsersInChat.SelectionChanged += (sender, e) => { _eventListBox?.Invoke(sender, e); };
         }
 
-        int index = 0;
+        int? index = 0;
         public event EventHandler _eventListBox;
 
-        public int SelectIndexItem
+        public int? SelectIndexItem
         {
             get
             {
@@ -57,7 +57,7 @@ namespace ChatUi.Custom_Controls
         {
             Button button = sender as Button;
             index = ListBoxDeleteUsersInChat.Items.IndexOf(button.DataContext);
-            ListBoxDeleteUsersInChat.SelectedIndex = index;
+            ListBoxDeleteUsersInChat.SelectedIndex = (int)index;
         }
     }
 }

@@ -62,7 +62,7 @@
                 <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Background="Transparent" Height="Auto" Visibility="{Binding Visbility}">
+            <Border x:Name="Search" Grid.Column="0" Background="Transparent" Height="Auto" Visibility="{Binding Visbility}">
                 <Border Background="#F8F6F7" Height="48" CornerRadius="25" HorizontalAlignment="Stretch">
                     <Grid Height="Auto">
                         <Grid.ColumnDefinitions>

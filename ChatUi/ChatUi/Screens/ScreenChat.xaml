@@ -475,6 +475,8 @@
                                         <Button x:Name="OpenFriendProfileButton" Style="{StaticResource PopupButtonUserProfileStyle}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="OpenProfileFriend_Click"/>
                                         <Button x:Name="OpenUsersProfileButton" Style="{StaticResource PopupButtonUsersProfile}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="OpenUsersProfileButton_Click" />
                                         <Separator/>
+                                        <Button x:Name="AddFriendsInChatButton" Style="{StaticResource PopupButtonAddFriendToChatStyle}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="AddFriendsInChatButton_Click" />
+                                        <Separator/>
                                         <Button x:Name="DeleteChatButton" Style="{StaticResource PopupButtonDeleteChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="DeleteChatButton_Click"/>
                                         <Button x:Name="LeaveChatButton" Style="{StaticResource PopupButtonCkicChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="LeaveChatButton_Click"/>
                                         <Button x:Name="ClearChatButton" Style="{StaticResource PopupButtonClearChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="ClearChatButton_Click"/>
