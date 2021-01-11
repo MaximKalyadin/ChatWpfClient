@@ -31,6 +31,7 @@ namespace ChatUi.Screens
         public UserReceiveModel _userReceiveModel { get; set; }
         static JsonStringSerializer serializer = new JsonStringSerializer();
         private readonly ClientServerService clientServerService_;
+        public bool isChange = false;
         public ScreenFriend()
         {
             InitializeComponent();
@@ -179,6 +180,7 @@ namespace ChatUi.Screens
                         MessageBox.Show(operationResultInfo.ErrorInfo);
                     }
                 }
+                isChange = true;
                 Itemsource();
                 SendDataInList();
             });

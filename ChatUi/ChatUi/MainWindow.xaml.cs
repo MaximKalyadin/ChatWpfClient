@@ -37,7 +37,7 @@ namespace ChatUi
         public MainWindow(UserReceiveModel model)
         {
             InitializeComponent();
-            Debug.WriteLine(model.Id);
+            Debug.WriteLine(model.UserId);
             clientServerService_ = ClientServerService.GetInstanse();
             IsFitToWidth = false;
             UserResponseModel userResponseModel = new UserResponseModel();
@@ -51,7 +51,7 @@ namespace ChatUi
             userResponseModel.PhoneNumber = model.PhoneNumber;
             userResponseModel.Name = model.Name;
             userResponseModel.IsOnline = model.IsOnline;
-            userResponseModel.Id = model.Id;
+            userResponseModel.Id = model.UserId;
             userResponseModel.Country = model.Country;
             userResponseModel.City = model.City;
             userResponseModel.Gender = model.Gender;
@@ -63,26 +63,6 @@ namespace ChatUi
             {
                 myProfile.ProfileImageSource = converter.ConvertByteToImage(userReceiveModel.File.BinaryForm);
             }
-
-            //get users
-            clientServerService_.SendAsync(new ClientOperationMessage()
-            {
-                Operation = ClientOperations.GetUsers,
-                JsonData = serializer.Serialize(new UserPaginationResponseModel()
-                {
-                    UserId = userReceiveModel.Id
-                })
-            });
-
-            //get friend
-            clientServerService_.SendAsync(new ClientOperationMessage()
-            {
-                Operation = ClientOperations.GetFriends,
-                JsonData = serializer.Serialize(new UserPaginationResponseModel()
-                {
-                    UserId = userReceiveModel.Id
-                })
-            });
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)
@@ -144,7 +124,7 @@ namespace ChatUi
                             Operation = ClientOperations.GetChats,
                             JsonData = serializer.Serialize(new UserPaginationResponseModel
                             {
-                                UserId = userReceiveModel.Id
+                                UserId = userReceiveModel.UserId
                             })
                         });
                     }
@@ -161,6 +141,28 @@ namespace ChatUi
                     Chat.Notification.Visibility = Visibility.Collapsed;
                     Chat.MyProfile.Visibility = Visibility.Collapsed;
 
+                    if (!Friend.isChange)
+                    {
+                        //get users
+                        clientServerService_.SendAsync(new ClientOperationMessage()
+                        {
+                            Operation = ClientOperations.GetUsers,
+                            JsonData = serializer.Serialize(new UserPaginationResponseModel()
+                            {
+                                UserId = userReceiveModel.UserId
+                            })
+                        });
+
+                        //get friend
+                        clientServerService_.SendAsync(new ClientOperationMessage()
+                        {
+                            Operation = ClientOperations.GetFriends,
+                            JsonData = serializer.Serialize(new UserPaginationResponseModel()
+                            {
+                                UserId = userReceiveModel.UserId
+                            })
+                        });
+                    }
                     Friend._userReceiveModel = userReceiveModel;
                     Friend.ViewFriend();
                     break;
@@ -180,7 +182,7 @@ namespace ChatUi
                             Operation = ClientOperations.GetNotifications,
                             JsonData = serializer.Serialize(new UserPaginationResponseModel()
                             {
-                                UserId = userReceiveModel.Id
+                                UserId = userReceiveModel.UserId
                             })
                         });
                     }
@@ -228,10 +230,6 @@ namespace ChatUi
                 Chat.MyProfile.MyProfile(Settings._userReceiveModel);
                 Chat.MyProfile.GridMyProfile.Visibility = Visibility.Visible;
             }
-
-
-
-            
         }
     }
 }

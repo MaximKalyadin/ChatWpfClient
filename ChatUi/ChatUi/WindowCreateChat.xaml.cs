@@ -101,7 +101,7 @@ namespace ChatUi
                 }
                 users.Add(new ChatUserResponseModel
                 {
-                    UserId = _userReceiveModel.Id
+                    UserId = _userReceiveModel.UserId
                 });
                 clientServerService_.SendAsync(new ClientOperationMessage
                 {
@@ -110,7 +110,7 @@ namespace ChatUi
                     {
                         ChatName = searchQuery.Text,
                         DateOfCreation = DateTime.Now,
-                        CreatorId = _userReceiveModel.Id,
+                        CreatorId = _userReceiveModel.UserId,
                         ChatUsers = users
                     })
                 });
@@ -127,7 +127,7 @@ namespace ChatUi
                 }
                 users.Add(new ChatUserResponseModel
                 {
-                    UserId = _userReceiveModel.Id,
+                    UserId = _userReceiveModel.UserId,
                     ChatId = ChatId
                 });
                 clientServerService_.SendAsync(new ClientOperationMessage
@@ -137,7 +137,7 @@ namespace ChatUi
                     {
                         Id = ChatId,
                         ChatName = searchQuery.Text,
-                        CreatorId = _userReceiveModel.Id,
+                        CreatorId = _userReceiveModel.UserId,
                         ChatUsers = users,
                         DateOfCreation = DateTime.Now
                     })
@@ -157,7 +157,7 @@ namespace ChatUi
             {
                 usersInChat.Add(friend[(int)FriendListAdd.SelectIndexItem]);
                 FriendListAdd.SelectIndexItem = null;
-            } else if (user == null && IsAddFriend && CreatorId == _userReceiveModel.Id && FriendListAdd.SelectIndexItem != null)
+            } else if (user == null && IsAddFriend && CreatorId == _userReceiveModel.UserId && FriendListAdd.SelectIndexItem != null)
             {
                 usersInChat.Add(friend[(int)FriendListAdd.SelectIndexItem]);
                 FriendListAdd.SelectIndexItem = null;
@@ -172,7 +172,7 @@ namespace ChatUi
 
         private void FriendListInChat_ListBoxSelectionChange(object sender, EventArgs e)
         {
-            if (IsDeleteChat && CreatorId == _userReceiveModel.Id && FriendListInChat.SelectIndexItem != null)
+            if (IsDeleteChat && CreatorId == _userReceiveModel.UserId && FriendListInChat.SelectIndexItem != null)
             {
                 if (usersInChat.Count == 1)
                 {
@@ -193,7 +193,7 @@ namespace ChatUi
                 users.Add(new ChatUserResponseModel
                 {
                     ChatId = ChatId,
-                    UserId = _userReceiveModel.Id
+                    UserId = _userReceiveModel.UserId
                 });
                 clientServerService_.SendAsync(new ClientOperationMessage
                 {
@@ -207,7 +207,7 @@ namespace ChatUi
                 usersInChat.RemoveAt((int)FriendListInChat.SelectIndexItem);
                 FriendListInChat.SelectIndexItem = null;
             }
-            else if(CreatorId != _userReceiveModel.Id && FriendListInChat.SelectIndexItem != null)
+            else if(CreatorId != _userReceiveModel.UserId && FriendListInChat.SelectIndexItem != null)
             {
                 MessageBox.Show("Вы не являетесь создателем чата и не можете удалить пользователя из него!");
                 FriendListInChat.SelectIndexItem = null;

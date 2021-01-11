@@ -82,9 +82,9 @@ namespace ChatUi.Custom_Controls
             index = ListBoxFriend.Items.IndexOf(button.DataContext);
             var ind = ListBoxFriend.Items.IndexOf(button.DataContext);
             FriendResponseModel friend = new FriendResponseModel();
-            friend.UserId = _userReceiveModel.Id;
+            friend.UserId = _userReceiveModel.UserId;
             friend.FriendId = _friends[ind].Id;
-            Debug.WriteLine(_userReceiveModel.Id);
+            Debug.WriteLine(_userReceiveModel.UserId);
             
             Debug.WriteLine(friend.FriendId + " " + friend.UserId);
 

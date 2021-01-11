@@ -159,7 +159,7 @@ namespace ChatUi.Screens
                 }
                 else
                 {
-                    var data = el.ChatUsers.FirstOrDefault(c => c.Id != _userReceiveModel.Id);
+                    var data = el.ChatUsers.FirstOrDefault(c => c.Id != _userReceiveModel.UserId);
                     if (data != null)
                     {
                         chatListView.Id = data.Id;
@@ -198,7 +198,7 @@ namespace ChatUi.Screens
                     messagesView.Add(new ViewMessages
                     {
                         Message = el.UserMassage,
-                        MessageStatus = (el.UserId == _userReceiveModel.Id) ? "Sent" : "Received",
+                        MessageStatus = (el.UserId == _userReceiveModel.UserId) ? "Sent" : "Received",
                         TimeStamp = el.Date.ToString()
                     });
                 }
@@ -328,7 +328,7 @@ namespace ChatUi.Screens
             {
                 OpenFriendProfileButton.Visibility = Visibility.Collapsed;
                 OpenUsersProfileButton.Visibility = Visibility.Visible;
-                if (FriendProfileView.CreatorId == _userReceiveModel.Id)
+                if (FriendProfileView.CreatorId == _userReceiveModel.UserId)
                 {
                     LeaveChatButton.Visibility = Visibility.Collapsed;
                     DeleteChatButton.Visibility = Visibility.Visible;
@@ -412,7 +412,7 @@ namespace ChatUi.Screens
             var user = new List<ChatUserResponseModel>();
             foreach(var el in chats[ChatId].ChatUsers)
             {
-                if (el.Id != _userReceiveModel.Id)
+                if (el.Id != _userReceiveModel.UserId)
                 {
                     user.Add(new ChatUserResponseModel
                     {
@@ -440,7 +440,7 @@ namespace ChatUi.Screens
             var users = new List<AllUsersView>();
             foreach (var el in chats[ChatId].ChatUsers)
             {
-                if (el.Id != _userReceiveModel.Id)
+                if (el.Id != _userReceiveModel.UserId)
                 {
                     users.Add(new AllUsersView
                     {
@@ -467,7 +467,7 @@ namespace ChatUi.Screens
             var users = new List<AllUsersView>();
             foreach(var el in chats[ChatId].ChatUsers)
             {
-                if (el.Id != _userReceiveModel.Id)
+                if (el.Id != _userReceiveModel.UserId)
                 {
                     users.Add(new AllUsersView
                     {
@@ -501,7 +501,7 @@ namespace ChatUi.Screens
                     {
                         ChatId = chats[ChatId].Id,
                         Date = DateTime.Now,
-                        FromUserId = _userReceiveModel.Id,
+                        FromUserId = _userReceiveModel.UserId,
                         UserMassage = message.Text
                     })
                 });

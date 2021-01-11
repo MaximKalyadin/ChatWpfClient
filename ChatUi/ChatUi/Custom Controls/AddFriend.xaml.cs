@@ -81,9 +81,9 @@ namespace ChatUi.Custom_Controls
             Button button = sender as Button;
             index = ListBoxUsers.Items.IndexOf(button.DataContext);
             FriendResponseModel friend = new FriendResponseModel();
-            friend.UserId = _userReceiveModel.Id;
+            friend.UserId = _userReceiveModel.UserId;
             friend.FriendId = _users[index].Id;
-            Debug.WriteLine(_userReceiveModel.Id);
+            Debug.WriteLine(_userReceiveModel.UserId);
             Debug.WriteLine(friend.FriendId + " " + friend.UserId);
             clientServerService_.SendAsync(new ClientOperationMessage()
             {

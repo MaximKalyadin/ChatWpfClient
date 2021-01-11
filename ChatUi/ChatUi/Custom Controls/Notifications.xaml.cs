@@ -83,7 +83,7 @@ namespace ChatUi.Custom_Controls
             NotificationResponseModel model = new NotificationResponseModel();
             model.Id = notifications[ind].Id;
             model.IsAccepted = true;
-            model.ToUserId = _userReceiveModel.Id;
+            model.ToUserId = _userReceiveModel.UserId;
             model.FromUserId = notifications[ind].FromUserId;
 
 
@@ -111,7 +111,7 @@ namespace ChatUi.Custom_Controls
             NotificationResponseModel model = new NotificationResponseModel();
             model.Id = notifications[ind].Id;
             model.IsAccepted = false;
-            model.ToUserId = _userReceiveModel.Id;
+            model.ToUserId = _userReceiveModel.UserId;
             model.FromUserId = notifications[ind].FromUserId;
             foreach (var el in notifications)
             {
