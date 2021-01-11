@@ -31,6 +31,7 @@ namespace ChatUi
 
         public UserReceiveModel userReceiveModel { get; set; }
         public UserResponseModel UserResponseModel { get; set; }
+        static Converter converter = new Converter();
         public readonly ClientServerService clientServerService_;
         static JsonStringSerializer serializer = new JsonStringSerializer();
         public MainWindow(UserReceiveModel model)
@@ -40,6 +41,10 @@ namespace ChatUi
             clientServerService_ = ClientServerService.GetInstanse();
             IsFitToWidth = false;
             UserResponseModel userResponseModel = new UserResponseModel();
+            if (model.File != null)
+            {
+                userResponseModel.File = model.File;
+            }
             userResponseModel.UserName = model.UserName;
             userResponseModel.SecondName = model.SecondName;
             userResponseModel.File = model.File;
@@ -50,9 +55,15 @@ namespace ChatUi
             userResponseModel.Country = model.Country;
             userResponseModel.City = model.City;
             userResponseModel.Gender = model.Gender;
+            
             userReceiveModel = model;
             UserResponseModel = userResponseModel;
             myProfile.IsOnline = (bool)model.IsOnline;
+            if (userReceiveModel.File.BinaryForm != null)
+            {
+                myProfile.ProfileImageSource = converter.ConvertByteToImage(userReceiveModel.File.BinaryForm);
+            }
+
             //get users
             clientServerService_.SendAsync(new ClientOperationMessage()
             {
@@ -205,10 +216,22 @@ namespace ChatUi
             Chat.ChatList.Visibility = Visibility.Collapsed;
             Chat.Notification.Visibility = Visibility.Collapsed;
             Chat.MyProfile.Visibility = Visibility.Visible;
+            
+            if (Settings._userReceiveModel == null)
+            {
+                Chat.MyProfile.MyProfileImageScreen.IsOnline = (bool)userReceiveModel.IsOnline;
+                Chat.MyProfile.MyProfile(userReceiveModel);
+                Chat.MyProfile.GridMyProfile.Visibility = Visibility.Visible;
+            } else
+            {
+                Chat.MyProfile.MyProfileImageScreen.IsOnline = (bool)Settings._userReceiveModel.IsOnline;
+                Chat.MyProfile.MyProfile(Settings._userReceiveModel);
+                Chat.MyProfile.GridMyProfile.Visibility = Visibility.Visible;
+            }
 
-            Chat.MyProfile.MyProfileImageScreen.IsOnline = (bool)userReceiveModel.IsOnline;
-            Chat.MyProfile.MyProfile(userReceiveModel);
-            Chat.MyProfile.GridMyProfile.Visibility = Visibility.Visible;
+
+
+            
         }
     }
 }

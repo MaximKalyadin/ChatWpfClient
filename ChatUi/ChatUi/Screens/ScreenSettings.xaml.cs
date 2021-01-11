@@ -1,4 +1,5 @@
 ﻿using ClientToServerApi;
+using ClientToServerApi.Models;
 using ClientToServerApi.Models.Enums;
 using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
@@ -180,17 +181,14 @@ namespace ChatUi.Screens
                 {
                     Image image = new Image();
                     image.Source = new BitmapImage(new Uri(ofd.FileName));
-                    byte[] mass;
-                    using(MemoryStream ms = new MemoryStream())
+                    FileModel file = new FileModel
                     {
-                        var bmp = image.Source as BitmapImage;
-                        JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                        encoder.Frames.Add(BitmapFrame.Create(bmp));
-                        encoder.Save(ms);
-                        mass = ms.ToArray();
-                    }
-                    _userResponseModel.File.BinaryForm = mass;
-                    _userReceiveModel.File.BinaryForm = mass;
+                        FileName = ofd.FileName,
+                        Extension = System.IO.Path.GetExtension(ofd.FileName),
+                        BinaryForm = File.ReadAllBytes(ofd.FileName)
+                    };
+                    _userReceiveModel.File = file;
+                    _userResponseModel.File = file;
                     PictureSettings.ProfileImageSource = new BitmapImage(new Uri(ofd.FileName));
                 }
                 catch (Exception)

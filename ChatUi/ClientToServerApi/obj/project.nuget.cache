@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Cu/b7fJ6T6/n4KfQfeVKfrM8CSdGWwgblDZvDxs97JlRYJuVHol06oQkkX/doDESaOf7UFaVFcZZ37otYmBojg==",
+  "dgSpecHash": "ei3joAIo6KLWik9bWw8yak0NDq4mloUdY23o+QFBDjLSK+nqkKc260bSFsoW/7pYQaDKJqTtibHYAo1P/jUPAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Максим\\Desktop\\Chat\\ChatUi\\ClientToServerApi\\ClientToServerApi.csproj",
   "expectedPackageFiles": [
@@ -15,7 +15,19 @@
     "C:\\Users\\Максим\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\system.text.encodings.web\\5.0.0\\system.text.encodings.web.5.0.0.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512",
-    "C:\\Users\\Максим\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "C:\\Users\\Максим\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\Максим\\.nuget\\packages\\windowsbase\\4.6.1055\\windowsbase.4.6.1055.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"WindowsBase 4.6.1055\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \".NETStandard,Version=v2.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "WindowsBase",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

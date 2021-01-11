@@ -141,6 +141,15 @@
         "runtime": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
+      },
+      "WindowsBase/4.6.1055": {
+        "type": "package",
+        "compile": {
+          "lib/WindowsBase.dll": {}
+        },
+        "runtime": {
+          "lib/WindowsBase.dll": {}
+        }
       }
     }
   },
@@ -580,6 +589,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WindowsBase/4.6.1055": {
+      "sha512": "1NKRZTcRus8Q1ZPZz9QAucHYHLHmQ3G+MMaFFZyPTDRpEfmIFLo9mtSyO8TZkEJFXaNXvnhenPod4ltd8EOHkg==",
+      "type": "package",
+      "path": "windowsbase/4.6.1055",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/WindowsBase.dll",
+        "windowsbase.4.6.1055.nupkg.sha512",
+        "windowsbase.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -587,7 +608,8 @@
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 12.0.3",
       "Newtonsoft.Json.Bson >= 1.0.2",
-      "System.Text.Json >= 5.0.0"
+      "System.Text.Json >= 5.0.0",
+      "WindowsBase >= 4.6.1055"
     ]
   },
   "packageFolders": {
@@ -644,6 +666,10 @@
           "System.Text.Json": {
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "WindowsBase": {
+            "target": "Package",
+            "version": "[4.6.1055, )"
           }
         },
         "imports": [
@@ -659,5 +685,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"WindowsBase 4.6.1055\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \".NETStandard,Version=v2.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "WindowsBase",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }
