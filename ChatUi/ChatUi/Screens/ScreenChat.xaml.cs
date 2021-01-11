@@ -1,9 +1,12 @@
 ﻿using ClientToServerApi;
 using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.ReceivedModels.ChatModels;
+using ClientToServerApi.Models.ReceivedModels.MessageModels;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModel.ChatModels;
+using ClientToServerApi.Models.ResponseModels;
 using ClientToServerApi.Models.ResponseModels.ChatModels;
+using ClientToServerApi.Models.ResponseModels.MessageModels;
 using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
@@ -33,6 +36,7 @@ namespace ChatUi.Screens
         static JsonStringSerializer serializer = new JsonStringSerializer();
         List<ChatReceiveModel> chats = new List<ChatReceiveModel>();
         List<ChatListViewModel> chatView = new List<ChatListViewModel>();
+        Dictionary<int, List<MessageReceiveModel>> messages = new Dictionary<int, List<MessageReceiveModel>>();
         public FriendProfileView FriendProfileView { get; set; }
         public UserReceiveModel _userReceiveModel { get; set; }
         public List<AllUsersView> friend = new List<AllUsersView>();
@@ -53,10 +57,59 @@ namespace ChatUi.Screens
         {
             Dispatcher.InvokeAsync(() =>
             {
-                if (operationResultInfo.JsonData != null)
+                try
                 {
-
+                    if (operationResultInfo.JsonData != null)
+                    {
+                        var data = serializer.Deserialize<MessageReceiveModel>(operationResultInfo.JsonData.ToString());
+                        if (!messages.ContainsKey(data.ChatId))
+                        {
+                            messages.Add(data.ChatId, new List<MessageReceiveModel>
+                            {
+                                data
+                            });
+                        } else
+                        {
+                            var message = messages[data.ChatId].FirstOrDefault(m => m.Id == data.Id
+                            || m.Date.Equals(data.Date) && m.UserId == data.UserId && m.UserMassage.Equals(data.UserMassage));
+                            if (message == null)
+                            {
+                                messages[data.ChatId].Add(data);
+                            }
+                            else
+                            {
+                                message = data;
+                            }
+                        }
+                    }
+                    else if (!messages.ContainsKey(chats[ChatId].Id))
+                    {
+                        messages.Add(chats[ChatId].Id, new List<MessageReceiveModel>());
+                    }
                 }
+                catch
+                {
+                    if (operationResultInfo.JsonData != null)
+                    {
+                        var data = serializer.Deserialize<List<MessageReceiveModel>>(operationResultInfo.JsonData.ToString());
+                        var firstMessage = data.FirstOrDefault();
+                        if (firstMessage != null)
+                        {
+                            if (!messages.ContainsKey(firstMessage.ChatId))
+                            {
+                                messages.Add(firstMessage.ChatId, data);
+                            }
+                            else
+                            {
+                                messages[firstMessage.ChatId] = data;
+                            }
+                        } else if (!messages.ContainsKey(chats[ChatId].Id))
+                        {
+                            messages.Add(chats[ChatId].Id, new List<MessageReceiveModel>());
+                        }
+                    }
+                }
+                ItemSourceMessage(chats[ChatId].Id);
             });
         }
 
@@ -132,6 +185,25 @@ namespace ChatUi.Screens
         {
             ChatList.ListChat.ItemsSource = null;
             ChatList.ListChat.ItemsSource = chatView;
+        }
+
+        private void ItemSourceMessage(int id)
+        {
+            ViewChatListMessage.ListMessages.ItemsSource = null;
+            var messagesView = new List<ViewMessages>();
+            if (messages[id] != null)
+            {
+                foreach (var el in messages[id])
+                {
+                    messagesView.Add(new ViewMessages
+                    {
+                        Message = el.UserMassage,
+                        MessageStatus = (el.UserId == _userReceiveModel.Id) ? "Sent" : "Received",
+                        TimeStamp = el.Date.ToString()
+                    });
+                }
+            }
+            ViewChatListMessage.ListMessages.ItemsSource = messagesView;
         }
 
         public void ChatListListener(OperationResultInfo operationResultInfo)
@@ -217,10 +289,11 @@ namespace ChatUi.Screens
 
         public void ListBoxChat_ListBoxSelectionChange(object sender, EventArgs e)
         {
-            if (ChatList.SelectedIndex >= 0)
+            if (ChatList.SelectedIndex >= 0 )
             {
                 ChatId = ChatList.SelectedIndex;
                 BorderSendMassege.Visibility = Visibility.Visible;
+                ViewChatListMessage.Visibility = Visibility.Visible;
                 ImageChat.IsOnline = chatView[ChatList.SelectedIndex].IsOnline;
                 UserNameSurnameChatRun.Text = chatView[ChatList.SelectedIndex].Name;
                 OnlineRun.Text = chatView[ChatList.SelectedIndex].Online;
@@ -237,6 +310,14 @@ namespace ChatUi.Screens
                 {
                     FriendProfile.Visibility = Visibility.Collapsed;
                 }
+                clientServerService_.SendAsync(new ClientOperationMessage
+                {
+                    Operation = ClientOperations.GetMessages,
+                    JsonData = serializer.Serialize(new ChatPaginationResponseModel
+                    {
+                        ChatId = chats[ChatId].Id
+                    })
+                });
             }
         }
 
@@ -400,6 +481,33 @@ namespace ChatUi.Screens
             }
             WindowCreateChat windowCreate = new WindowCreateChat(friend, users, _userReceiveModel, FriendProfileView.CreatorId, chats[ChatId].Id);
             windowCreate.Show();
+        }
+
+        private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(message.Text))
+            {
+                /*messages[chats[ChatId].Id].Add(new MessageReceiveModel
+                {
+                    ChatId = chats[ChatId].Id,
+                    Date = DateTime.Now,
+                    UserId = _userReceiveModel.Id,
+                    UserMassage = message.Text
+                });*/
+                clientServerService_.SendAsync(new ClientOperationMessage
+                {
+                    Operation = ClientOperations.SendMessage,
+                    JsonData = serializer.Serialize(new MessageResponseModel
+                    {
+                        ChatId = chats[ChatId].Id,
+                        Date = DateTime.Now,
+                        FromUserId = _userReceiveModel.Id,
+                        UserMassage = message.Text
+                    })
+                });
+            }
+            message.Clear();
+            ItemSourceMessage(chats[ChatId].Id);
         }
     }
 }

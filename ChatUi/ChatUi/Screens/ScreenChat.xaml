@@ -487,7 +487,9 @@
                         </UniformGrid>
                     </Grid>
                 </Grid>
-                <Custom_Controls:Conversation Grid.Row="1" BorderBrush="#B7B5B8" Visibility="Collapsed"/>
+                
+                <Custom_Controls:Conversation x:Name="ViewChatListMessage" Grid.Row="1" BorderBrush="#B7B5B8" Visibility="Collapsed"/>
+                
                 <Grid Grid.Row="2" Background="White" Grid.RowSpan="1">
                     <Border Background="Transparent" Visibility="{Binding Visibility}" Margin="30,0,30,0">
                         <Grid>
@@ -520,7 +522,7 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,70,0">
                                 <Image Source="/assets/happy.png" Stretch="Uniform" Width="25"/>
                             </StackPanel>
-                            <Button Style="{StaticResource SendMessageButtonStyle}">
+                            <Button Style="{StaticResource SendMessageButtonStyle}" x:Name="ButtonSendMessage" Click="ButtonSendMessage_Click">
                                 <Button.Content>
                                     <Image Source="/assets/send.png" Stretch="Uniform" Width="25"/>
                                 </Button.Content>

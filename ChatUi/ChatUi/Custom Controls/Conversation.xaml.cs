@@ -22,7 +22,8 @@ namespace ChatUi.Custom_Controls
         public Conversation()
         {
             InitializeComponent();
-            DataContext = new ViewModel();
         }
+
+
     }
 }

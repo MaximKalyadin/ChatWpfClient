@@ -51,5 +51,17 @@ namespace ChatUi.Custom_Controls
                 _eventListBox -= value;
             }
         }
+        int? index = 0;
+        public int? SelectIndexItem
+        {
+            get
+            {
+                return index;
+            }
+            set
+            {
+                index = value;
+            }
+        }
     }
 }
