@@ -1,4 +1,5 @@
 ﻿using ClientToServerApi.Models.ReceivedModels.UserModel;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace ChatUi.Screens
     /// </summary>
     public partial class ScreenMyProfile : UserControl
     {
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         public ScreenMyProfile()
         {
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace ChatUi.Screens
             }
             else
             {
+                logger.Warn("не удалось загрузить данные для просмотра своего профиля");
                 System.Windows.MessageBox.Show("Не удалось Загрузить данные!");
             }
         }

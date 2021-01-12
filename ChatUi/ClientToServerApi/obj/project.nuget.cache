@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ei3joAIo6KLWik9bWw8yak0NDq4mloUdY23o+QFBDjLSK+nqkKc260bSFsoW/7pYQaDKJqTtibHYAo1P/jUPAg==",
+  "dgSpecHash": "sHctABPFhFR5X/YAdqgJstHeCO/ekiLGQTtc0nYHQ981kP+YRAICYQdsWV08pmwVxRINdG+96SV0zjBqG6FhWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Максим\\Desktop\\Chat\\ChatUi\\ClientToServerApi\\ClientToServerApi.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Максим\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\Максим\\.nuget\\packages\\nlog\\4.7.6\\nlog.4.7.6.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

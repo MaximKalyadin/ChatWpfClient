@@ -102,7 +102,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Имя: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblname" Text="Имя: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="NameTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
@@ -113,7 +113,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Никнейм: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblnick" Text="Никнейм: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="NickTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
@@ -124,7 +124,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Фамилия: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblsurname" Text="Фамилия: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="SurnameTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
@@ -135,7 +135,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Пол: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblgen" Text="Пол: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <ComboBox x:Name="ComboBoxGender" Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}"  BorderThickness="1.2" Width="220" Margin="0 5 0 0">
                             <!--<ComboBoxItem Background="Transparent" BorderThickness="0" Content="Male"/>
                             <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Female"/>
@@ -148,7 +148,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Страна: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblcountr" Text="Страна: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <!--<TextBox x:Name="CuntryTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />-->
@@ -163,7 +163,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Город: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblcity" Text="Город: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <!--<TextBox x:Name="TownTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />-->
@@ -194,7 +194,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Старый пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="oldpas"  Text="Старый пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <PasswordBox x:Name="OldPasswordTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      BorderThickness="1.2" Background="Transparent" />
@@ -204,7 +204,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Новый пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="newpas" Text="Новый пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <PasswordBox x:Name="NewPasswordTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                       BorderThickness="1.2" Background="Transparent" />
@@ -214,7 +214,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Повторите пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="repeatpas" Text="Повторите пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <PasswordBox x:Name="RepeatPasswordTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" BorderThickness="1.2" Background="Transparent" />
                     </Grid>
@@ -224,7 +224,7 @@
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Phone: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <TextBlock x:Name="textblphone" Text="Phone: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="PhoneTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
@@ -235,8 +235,8 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Сохранить изменения ?" Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
-                        <Button x:Name="ChangeGenderButton" Content="Сохранить" Margin="0 5 28 0" Grid.Column="1" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" Click="ChangeButton_Click" />
+                        <TextBlock x:Name="savechange" Text="Сохранить изменения ?" Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <Button  x:Name="ChangeGenderButton" Content="Сохранить" Margin="0 5 28 0" Grid.Column="1" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" Click="ChangeButton_Click" />
                     </Grid>
                 </StackPanel>
             </Border>

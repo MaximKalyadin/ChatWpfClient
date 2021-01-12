@@ -6,6 +6,7 @@ using ClientToServerApi.Models.ResponseModels.ChatModels;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
 using ClientToServerApi.Serializer;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace ChatUi
         public UserReceiveModel _userReceiveModel { get; set; }
         public List<AllUsersView> friend = new List<AllUsersView>();
         public List<AllUsersView> usersInChat = new List<AllUsersView>();
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         public int? CreatorId { get; set; }
         public int ChatId { get; set; }
         public bool IsCreateChat = false;
@@ -164,6 +166,7 @@ namespace ChatUi
             }
             else if (FriendListAdd.SelectIndexItem != null)
             {
+                logger.Warn("Вы не являетесь создателем чата и не можете добавить в него людей!");
                 MessageBox.Show("Вы не являетесь создателем чата и не можете добавить в него людей!");
                 FriendListAdd.SelectIndexItem = null;
             }
@@ -176,6 +179,7 @@ namespace ChatUi
             {
                 if (usersInChat.Count == 1)
                 {
+                    logger.Warn("Недьзя удалить всех участников из беседы!");
                     MessageBox.Show("Недьзя удалить всех участников из беседы!");
                     return;
                 }
@@ -209,6 +213,7 @@ namespace ChatUi
             }
             else if(CreatorId != _userReceiveModel.UserId && FriendListInChat.SelectIndexItem != null)
             {
+                logger.Warn("Вы не являетесь создателем чата и не можете удалить пользователя из него!");
                 MessageBox.Show("Вы не являетесь создателем чата и не можете удалить пользователя из него!");
                 FriendListInChat.SelectIndexItem = null;
             } 

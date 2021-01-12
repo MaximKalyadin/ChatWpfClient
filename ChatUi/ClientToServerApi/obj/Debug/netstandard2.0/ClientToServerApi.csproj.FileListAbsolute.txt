@@ -54,5 +54,5 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandar
 C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandard2.0\ClientToServerApi.csproj.CopyComplete
 C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandard2.0\ClientToServerApi.dll
 C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandard2.0\ClientToServerApi.pdb
-C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandard2.0\ClientToServerApi.csproj.CoreCompileInputs.cache
 C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandard2.0\ClientToServerApi.csprojAssemblyReference.cache
+C:\Users\Максим\Desktop\Chat\ChatUi\ClientToServerApi\obj\Debug\netstandard2.0\ClientToServerApi.csproj.CoreCompileInputs.cache

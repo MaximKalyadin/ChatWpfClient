@@ -4,6 +4,7 @@ using ClientToServerApi.Models.ReceivedModels.NotificationModels;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Serializer;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace ChatUi.Screens
         private readonly ClientServerService clientServerService_;
         List<NotificationReceiveModel> notifications = new List<NotificationReceiveModel>();
         public UserReceiveModel _userReceiveModel { get; set; }
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         public bool IsChange = false;
         public ScreenNotification()
         {
@@ -50,6 +52,7 @@ namespace ChatUi.Screens
             {
                 try
                 {
+                    logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                     if (operationResultInfo.JsonData != null)
                     {
                         var notifi = serializer.Deserialize<NotificationReceiveModel>(operationResultInfo.JsonData.ToString());

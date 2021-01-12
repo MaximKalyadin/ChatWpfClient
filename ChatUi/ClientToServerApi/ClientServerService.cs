@@ -1,6 +1,7 @@
 ﻿using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Serializer;
+using NLog;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -21,7 +22,7 @@ namespace ClientToServerApi
         private static ClientServerService clientServerService_;
         private static string ServerIp { set; get; }
         private static string ServerPort { set; get; }
-
+        private readonly Logger logger =  LogManager.GetCurrentClassLogger();
         private ClientServerService()
         {
             tcpClient_ = new TcpClient();
@@ -77,7 +78,7 @@ namespace ClientToServerApi
             {
                MessageBox.Show("Не удалось установить соединение с сервером!");
             }
-
+            logger.Warn("Не удалось установить соединение с сервером!");
             throw new Exception("Не удалось установить соединение с сервером!");
         }
 
@@ -85,13 +86,16 @@ namespace ClientToServerApi
         {
             try
             {
+                logger.Info($"Send message to server: Operation = {clientOperationMessage.Operation} JsonData = {clientOperationMessage.JsonData}");
                 byte[] binary_data = Encoding.UTF8.GetBytes(serializer.Serialize(clientOperationMessage));
                 await networkStream_.WriteAsync(binary_data, 0, binary_data.Length).ConfigureAwait(false);
             }
             catch(Exception)
             {
                 MessageBox.Show("Не удалось отправить запрос на сервер");
+                logger.Warn("Не удалось отправить запрос на сервере");
                 throw new Exception("Не удалось отправить запрос на сервер");
+                
             }
         }
 
@@ -126,6 +130,7 @@ namespace ClientToServerApi
             catch(Exception)
             {
                 MessageBox.Show("Не удалось получить данные с сервера!");
+                logger.Warn("не удалось получить данные с сервера!");
                 throw new Exception("Не удалось получить данные с сервера!");
             }
         }

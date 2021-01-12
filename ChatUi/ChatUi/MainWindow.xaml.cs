@@ -4,9 +4,11 @@ using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Serializer;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +36,7 @@ namespace ChatUi
         static Converter converter = new Converter();
         public readonly ClientServerService clientServerService_;
         static JsonStringSerializer serializer = new JsonStringSerializer();
+        private readonly Logger loger = LogManager.GetCurrentClassLogger();
         public MainWindow(UserReceiveModel model)
         {
             InitializeComponent();
@@ -63,6 +66,8 @@ namespace ChatUi
             {
                 myProfile.ProfileImageSource = converter.ConvertByteToImage(userReceiveModel.File.BinaryForm);
             }
+
+            
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)
@@ -163,6 +168,7 @@ namespace ChatUi
                             })
                         });
                     }
+                    
                     Friend._userReceiveModel = userReceiveModel;
                     Friend.ViewFriend();
                     break;

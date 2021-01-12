@@ -84,7 +84,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Логин (Email)" Foreground="WhiteSmoke" FontSize="16"/>
+                        <Label x:Name="login" Content="Логин (Email)" Foreground="WhiteSmoke" FontSize="16"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -147,7 +147,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Код подтверждения" Foreground="WhiteSmoke" FontSize="16"/>
+                        <Label x:Name="code" Content="Код подтверждения" Foreground="WhiteSmoke" FontSize="16"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -211,7 +211,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Имя" Foreground="WhiteSmoke" FontSize="16"/>
+                        <Label x:Name="NameUser" Content="Имя" Foreground="WhiteSmoke" FontSize="16"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -275,7 +275,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Фамилия" Foreground="WhiteSmoke" FontSize="16"/>
+                        <Label x:Name="labelSurname" Content="Фамилия" Foreground="WhiteSmoke" FontSize="16"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -339,7 +339,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Пароль" Foreground="WhiteSmoke" FontSize="16"/>
+                        <Label x:Name="labelpassword" Content="Пароль" Foreground="WhiteSmoke" FontSize="16"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -400,7 +400,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Повторите пароль для подтверждения" Foreground="WhiteSmoke" FontSize="14"/>
+                        <Label x:Name="labelpasswordrepeat" Content="Повторите пароль для подтверждения" Foreground="WhiteSmoke" FontSize="14"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -805,14 +805,12 @@
                             <RowDefinition Height="6*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   FontSize="20" Foreground="WhiteSmoke">
-                            Здесь могла быть ваша реклама
-                        </TextBlock>
+                        <TextBlock x:Name="ChatNameTextBlock" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""
+                                   FontSize="20" Foreground="WhiteSmoke" />
                         <TabControl x:Name="TabControl" Grid.Row="1" Background="Transparent" BorderBrush="Transparent" SelectionChanged="TabControl_SelectionChanged">
                             <TabItem x:Name="AuthorizationTabItem" HorizontalAlignment="Center" Style="{StaticResource TabItemStyle}">
                                 <TabItem.Header>
-                                    <TextBlock HorizontalAlignment="Center" Text="Авторизация" />
+                                    <TextBlock x:Name="textblockauth" HorizontalAlignment="Center" Text="Авторизация" />
                                 </TabItem.Header>
                                 <TabItem.Triggers>
                                     <EventTrigger RoutedEvent="Window.Loaded">
@@ -844,7 +842,7 @@
                                         </Grid>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 15 0 0">
                                             <CheckBox VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}"/>
-                                            <Label Content="Запомнить пароль" FontSize="14" Foreground="WhiteSmoke" Margin="10 0 0 0"/>
+                                            <Label x:Name="labelsavepass" Content="Запомнить пароль" FontSize="14" Foreground="WhiteSmoke" Margin="10 0 0 0"/>
                                         </StackPanel>
                                         <Button x:Name="EnterButton" Content="Войти" Margin="0 25 0 0" Style="{StaticResource ButtonStyle}" Click="Button_Click"/>
                                         <Button x:Name="ForgetPasswordButton" Content="Забыли пароль?" Margin="0 30 0 0" Style="{StaticResource ButtonStyle}"
@@ -854,7 +852,7 @@
                             </TabItem>
                             <TabItem x:Name="RegistrationTabItem" HorizontalAlignment="Center" Style="{StaticResource TabItemStyle}">
                                 <TabItem.Header>
-                                    <TextBlock HorizontalAlignment="Center" Text="Регистрация" />
+                                    <TextBlock x:Name="textblockReg" HorizontalAlignment="Center" Text="Регистрация" />
                                 </TabItem.Header>
                                 <TabItem.Content>
                                     <StackPanel Grid.ColumnSpan="2" Margin="30 0">
@@ -896,12 +894,12 @@
                             </TabItem>
                             <TabItem x:Name="ConfirmRegistrationTabItem" HorizontalAlignment="Center" Style="{StaticResource TabItemStyle}" Visibility="Collapsed">
                                 <TabItem.Header>
-                                    <TextBlock HorizontalAlignment="Center" Text="Регистрация" />
+                                    <TextBlock x:Name="textblreg" HorizontalAlignment="Center" Text="Регистрация" />
                                 </TabItem.Header>
                                 <TabItem.Content>
                                     <StackPanel Margin="30 0">
                                         <TextBox x:Name="CodeConfirmTextBox" Margin="0 130 0 0" Style="{DynamicResource TextBoxCodeConfirmStyle}" MaxLength="4"/>
-                                        <Button x:Name="ConfirmCodeButton" Content="Подтвердить" Margin="0 70 0 0" Style="{StaticResource ButtonStyle}"/>
+                                        <Button  x:Name="ConfirmCodeButton" Content="Подтвердить" Margin="0 70 0 0" Style="{StaticResource ButtonStyle}"/>
                                     </StackPanel>
                                 </TabItem.Content>
                             </TabItem>

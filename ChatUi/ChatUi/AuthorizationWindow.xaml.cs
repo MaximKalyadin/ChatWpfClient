@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Serializer;
+using NLog;
 
 namespace ChatUi
 {
@@ -20,6 +21,7 @@ namespace ChatUi
     {
         private readonly ClientServerService clientServerService_;
         static JsonStringSerializer serializer = new JsonStringSerializer();
+        private readonly Logger loger = LogManager.GetCurrentClassLogger();
         public AuthorizationWindow()
         {
             
@@ -31,8 +33,10 @@ namespace ChatUi
 
         private void RegistrationListener(OperationResultInfo data)
         {
+            loger.Info($"Receive a message from the server: JsonData = {data.JsonData} ; ErrorInfo = {data.ErrorInfo} ListenerType = {data.ToListener} OperationResults = {data.OperationsResults}");
             this.Dispatcher.InvokeAsync(() =>
             {
+
                 if (data.OperationsResults == OperationsResults.Unsuccessfully)
                 {
                     var emailTextBox = this.TabControl.Template.FindName("EmailTextBox", this.TabControl) as TextBox;
@@ -42,6 +46,7 @@ namespace ChatUi
                     labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
                     var RegistrationButton = this.TabControl.Template.FindName("RegistrationNextButton", this.TabControl) as Button;
                     RegistrationButton.IsEnabled = true;
+                    loger.Warn($"Error = {data.ErrorInfo}");
                 }
                 else if (data.OperationsResults == OperationsResults.Successfully)
                 {
@@ -55,6 +60,7 @@ namespace ChatUi
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                loger.Info($"Receive a message from the server: JsonData = {data.JsonData} ; ErrorInfo = {data.ErrorInfo} ListenerType = {data.ToListener} OperationResults = {data.OperationsResults}");
                 //UserReceiveModel userReceiveModel = new UserReceiveModel();
                 var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
                 if (!string.IsNullOrEmpty(data.ErrorInfo))
@@ -65,6 +71,7 @@ namespace ChatUi
                     labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
                     var ButtonEnter = this.TabControl.Template.FindName("EnterButton", this.TabControl) as Button;
                     ButtonEnter.IsEnabled = true;
+                    loger.Warn($"Error = {data.ErrorInfo}");
                 }
                 else if (string.IsNullOrEmpty(data.ErrorInfo))
                 {

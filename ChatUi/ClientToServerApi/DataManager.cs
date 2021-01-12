@@ -1,5 +1,6 @@
 ﻿using ClientToServerApi.Models.Enums.Transmissions;
 using ClientToServerApi.Models.TransmissionModels;
+using NLog;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +10,7 @@ namespace ClientToServerApi
     public class DataManager
     { 
         private Dictionary<ListenerType, Handler> listenerDict_;
-
+        private readonly Logger loger = LogManager.GetCurrentClassLogger();
         public DataManager() => listenerDict_ = new Dictionary<ListenerType, Handler>();
         public void AddListener(ListenerType key, Handler listener) => listenerDict_.Add(key, listener);
         public void RemoveListener(ListenerType key) => listenerDict_.Remove(key);
@@ -23,6 +24,7 @@ namespace ClientToServerApi
             }
             else
                 throw new Exception("This key isn't contains in listener dictionary");
+            loger.Warn($"This key isn't contains in listener dictionary");
         }
     }
 }

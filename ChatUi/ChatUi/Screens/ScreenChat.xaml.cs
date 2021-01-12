@@ -11,6 +11,7 @@ using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
 using ClientToServerApi.Serializer;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,7 @@ namespace ChatUi.Screens
         public List<AllUsersView> friend = new List<AllUsersView>();
         public int ChatId { get; set; }
         public bool IsChange = false;
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         public ScreenChat()
         {
             InitializeComponent();
@@ -59,6 +61,7 @@ namespace ChatUi.Screens
             {
                 try
                 {
+                    logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                     if (operationResultInfo.JsonData != null)
                     {
                         var data = serializer.Deserialize<MessageReceiveModel>(operationResultInfo.JsonData.ToString());
@@ -117,6 +120,7 @@ namespace ChatUi.Screens
         {
             Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                 if (operationResultInfo.JsonData != null)
                 {
 
@@ -128,6 +132,7 @@ namespace ChatUi.Screens
         {
             Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                 if (operationResultInfo.JsonData != null)
                 {
                     var data = serializer.Deserialize<UserReceiveModel>(operationResultInfo.JsonData.ToString());
@@ -138,6 +143,7 @@ namespace ChatUi.Screens
                 }
                 else
                 {
+                    logger.Warn($"Error {operationResultInfo.ErrorInfo}");
                     MessageBox.Show("User info is null or empty");
                 }
             });
@@ -210,6 +216,7 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                 try
                 {
                     if (operationResultInfo.JsonData != null)
@@ -268,6 +275,7 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                 if (operationResultInfo.JsonData != null)
                 {
                     var data = serializer.Deserialize<ChatReceiveModel>(operationResultInfo.JsonData.ToString());
@@ -279,6 +287,7 @@ namespace ChatUi.Screens
                 }
                 else
                 {
+                    logger.Warn($"Error {operationResultInfo.ErrorInfo}");
                     MessageBox.Show("Data is null or empty");
                 }
                 ViewChat();
@@ -487,13 +496,6 @@ namespace ChatUi.Screens
         {
             if (!string.IsNullOrEmpty(message.Text))
             {
-                /*messages[chats[ChatId].Id].Add(new MessageReceiveModel
-                {
-                    ChatId = chats[ChatId].Id,
-                    Date = DateTime.Now,
-                    UserId = _userReceiveModel.Id,
-                    UserMassage = message.Text
-                });*/
                 clientServerService_.SendAsync(new ClientOperationMessage
                 {
                     Operation = ClientOperations.SendMessage,

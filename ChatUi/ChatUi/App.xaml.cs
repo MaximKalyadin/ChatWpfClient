@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,9 +17,11 @@ namespace ChatUi
     {
         public App()
         {
-            ClientServerService.SetApiConfig("25.68.135.116", "8667");
+
+            ClientServerService.SetApiConfig("25.47.60.11", "8667");
             var authorizationWindow = new AuthorizationWindow();
             authorizationWindow.Show();
-        }
-    }
+		}
+
+	}
 }

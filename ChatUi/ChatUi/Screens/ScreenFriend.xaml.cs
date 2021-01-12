@@ -4,6 +4,7 @@ using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Models.ViewModels;
 using ClientToServerApi.Serializer;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,6 +32,7 @@ namespace ChatUi.Screens
         public UserReceiveModel _userReceiveModel { get; set; }
         static JsonStringSerializer serializer = new JsonStringSerializer();
         private readonly ClientServerService clientServerService_;
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         public bool isChange = false;
         public ScreenFriend()
         {
@@ -91,6 +93,7 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                 if (operationResultInfo.JsonData != null)
                 {
                     var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData.ToString());
@@ -114,6 +117,7 @@ namespace ChatUi.Screens
             {
                 try
                 {
+                    logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                     if (operationResultInfo.JsonData != null)
                     {
                         var userListReceiveModels = serializer.Deserialize<UserListReceiveModel>(operationResultInfo.JsonData.ToString());
@@ -173,10 +177,12 @@ namespace ChatUi.Screens
                     }
                     else if (string.IsNullOrEmpty(operationResultInfo.ErrorInfo))
                     {
+
                         MessageBox.Show("у вас нет друзей!");
                     }
                     else
                     {
+                        logger.Warn($"Error = {operationResultInfo.ErrorInfo}");
                         MessageBox.Show(operationResultInfo.ErrorInfo);
                     }
                 }
@@ -190,6 +196,7 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {operationResultInfo.JsonData} ; ErrorInfo = {operationResultInfo.ErrorInfo} ListenerType = {operationResultInfo.ToListener} OperationResults = {operationResultInfo.OperationsResults}");
                 if (operationResultInfo.JsonData != null)
                 {
                     var userListReceiveModels = serializer.Deserialize<List<UserListReceiveModel>>(operationResultInfo.JsonData.ToString());
@@ -219,6 +226,7 @@ namespace ChatUi.Screens
                 }
                 else
                 {
+                    logger.Warn($"Error {operationResultInfo.ErrorInfo}");
                     MessageBox.Show(operationResultInfo.ErrorInfo);
                 }
                 isChange = true;

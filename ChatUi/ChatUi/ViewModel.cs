@@ -36,14 +36,4 @@ namespace ChatUi
 
         public bool IsItemSelected { get; set; }
     }
-
-    public class ConversationMessages
-    {
-
-        public string MessageStatus { get; set; }
-
-        public string TimeStamp { get; set; }
-
-        public string Message { get; set; }
-    }
 }

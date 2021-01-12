@@ -167,3 +167,5 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Encodings
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Json.xml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.ValueTuple.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\NLog.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\NLog.xml

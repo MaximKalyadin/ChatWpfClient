@@ -7,6 +7,7 @@ using ClientToServerApi.Models.ResponseModels.UserModel;
 using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Serializer;
 using Microsoft.Win32;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,6 +37,7 @@ namespace ChatUi.Screens
         public UserReceiveModel _userReceiveModel { get; set; }
         public UserResponseModel _userResponseModel { get; set; }
         static Converter converter = new Converter();
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         public bool IsChange = false;
         public ScreenSettings()
         {
@@ -74,6 +76,7 @@ namespace ChatUi.Screens
         {
             this.Dispatcher.InvokeAsync(() =>
             {
+                logger.Info($"Receive a message from the server: JsonData = {data.JsonData} ; ErrorInfo = {data.ErrorInfo} ListenerType = {data.ToListener} OperationResults = {data.OperationsResults}");
                 if (data.OperationsResults == OperationsResults.Unsuccessfully)
                 {
                     System.Windows.MessageBox.Show("Данные не обновились!");
@@ -125,6 +128,7 @@ namespace ChatUi.Screens
             }
             else
             {
+                logger.Warn("Не удалось загрузить данные для обновления профиля");
                 System.Windows.MessageBox.Show("Не удалось Загрузить данные!");
             }
         }
@@ -196,8 +200,9 @@ namespace ChatUi.Screens
                     _userResponseModel.File = file;
                     PictureSettings.ProfileImageSource = new BitmapImage(new Uri(ofd.FileName));
                 }
-                catch (Exception)
+                catch (Exception exe)
                 {
+                    logger.Warn(exe.Message);
                     System.Windows.MessageBox.Show("Невозможно открыть выбранный файл");
                 }
             }
