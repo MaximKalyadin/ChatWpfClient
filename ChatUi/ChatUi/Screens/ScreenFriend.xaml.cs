@@ -221,6 +221,7 @@ namespace ChatUi.Screens
                 {
                     MessageBox.Show(operationResultInfo.ErrorInfo);
                 }
+                isChange = true;
                 Itemsource();
                 SendDataInList();
             });

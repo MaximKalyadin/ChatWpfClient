@@ -94,11 +94,13 @@ namespace ChatUi
             if (string.IsNullOrEmpty(loginTextBox.Text))
             {
                 SetNotFillFieldInfo(loginTextBox.Style);
+                ButtonEnter.IsEnabled = true;
                 return;
             }
             if (string.IsNullOrEmpty(passwordBox.Password))
             {
                 SetNotFillFieldInfo(passwordBox.Style);
+                ButtonEnter.IsEnabled = true;
                 return;
             }
             clientServerService_.SendAsync(new ClientOperationMessage()

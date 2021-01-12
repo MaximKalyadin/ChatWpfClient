@@ -35,6 +35,7 @@ namespace ChatUi.Screens
         static JsonStringSerializer serializer = new JsonStringSerializer();
         public UserReceiveModel _userReceiveModel { get; set; }
         public UserResponseModel _userResponseModel { get; set; }
+        static Converter converter = new Converter();
         public bool IsChange = false;
         public ScreenSettings()
         {
@@ -116,6 +117,10 @@ namespace ChatUi.Screens
                 if (model.UserName != null)
                 {
                     Nick.Text = model.UserName.ToString();
+                }
+                if (model.File.BinaryForm != null)
+                {
+                    PictureSettings.ProfileImageSource = converter.ConvertByteToImage(model.File.BinaryForm);
                 }
             }
             else
