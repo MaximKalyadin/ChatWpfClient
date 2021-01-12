@@ -131,7 +131,6 @@ namespace ChatUi.Screens
                             usersView.IsOnline = "Offline";
                             usersView.Online = false;
                         }
-                        usersView.File = userListReceiveModels.Picture;
                         int f = 0;
                         foreach(var el in friendViews)
                         {
