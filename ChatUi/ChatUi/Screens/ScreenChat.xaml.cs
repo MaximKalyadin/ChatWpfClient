@@ -401,7 +401,7 @@ namespace ChatUi.Screens
                     }).ToList()
                 })
             });
-
+            BorderSendMassege.Visibility = Visibility.Collapsed;
             chatView.RemoveAt(ChatId);
             chats.RemoveAt(ChatId);
             Itemsource();
