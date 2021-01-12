@@ -3,6 +3,7 @@ using ClientToServerApi.Models.TransmissionModels;
 using ClientToServerApi.Serializer;
 using NLog;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -23,11 +24,13 @@ namespace ClientToServerApi
         private static string ServerIp { set; get; }
         private static string ServerPort { set; get; }
         private readonly Logger logger =  LogManager.GetCurrentClassLogger();
+        static Encoder encoder;
         private ClientServerService()
         {
             tcpClient_ = new TcpClient();
             dataManager_ = new DataManager();
             networkStream_ = Connect(ServerIp, ServerPort);
+            encoder = new Encoder();
         }
 
         #region DataManagerRegion 
@@ -87,7 +90,8 @@ namespace ClientToServerApi
             try
             {
                 logger.Info($"Send message to server: Operation = {clientOperationMessage.Operation} JsonData = {clientOperationMessage.JsonData}");
-                byte[] binary_data = Encoding.UTF8.GetBytes(serializer.Serialize(clientOperationMessage));
+
+                byte[] binary_data = encoder.Encryption(serializer.Serialize(clientOperationMessage));
                 await networkStream_.WriteAsync(binary_data, 0, binary_data.Length).ConfigureAwait(false);
             }
             catch(Exception)
@@ -104,26 +108,28 @@ namespace ClientToServerApi
             try
             {
                 byte[] buffer = new byte[1024];
-                
+                List<byte> byteMessage = new List<byte>();
                 while (true)
                 {
-                    StringBuilder stringBuilder = new StringBuilder();
                     do
                     {
-                        int count = networkStream_.Read(buffer, 0, 1024);
-                        stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, count));
+                        int count = networkStream_.Read(buffer, 0, 256);
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            byteMessage.Add(buffer[i]);
+                        }
                     } while (networkStream_.DataAvailable);
 
                     try
                     {
-                        var obj = serializer.Deserialize<OperationResultInfo>(stringBuilder.ToString());
-                        
+                        var obj = serializer.Deserialize<OperationResultInfo>(encoder.Decryption(byteMessage.ToArray()));
+                        byteMessage.Clear();
                         dataManager_.HandleData(obj.ToListener, obj);
-                        stringBuilder.Clear();
                     }
                     catch (Exception ex) 
-                    { 
-                        Debug.WriteLine(ex.Message); 
+                    {
+                        logger.Warn($"Error {ex.Message}");
                     }
                 }
             }
