@@ -94,7 +94,7 @@ namespace ClientToServerApi
                 byte[] binary_data = encoder.Encryption(serializer.Serialize(clientOperationMessage));
                 await networkStream_.WriteAsync(binary_data, 0, binary_data.Length).ConfigureAwait(false);
             }
-            catch(Exception)
+            catch(Exception) 
             {
                 MessageBox.Show("Не удалось отправить запрос на сервер");
                 logger.Warn("Не удалось отправить запрос на сервере");

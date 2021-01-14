@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ClientToServerApi.Models.ReceivedModels.ChatModels.ChatReceiveModel" Collapsed="true">
+    <Position X="10.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAgIACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ReceiveModels\ChatModels\ChatReceiveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ReceivedModels.ChatModels.ChatUserReceiveModel">
+    <Position X="6.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAAAAAAAAAAACAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\ReceiveModels\ChatModels\ChatUserReceiveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ReceivedModels.MessageModels.MessageReceiveModel">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgCAAAEAAABAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\ReceiveModels\MessageModels\MessageReceiveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ReceivedModels.NotificationModels.NotificationReceiveModel">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAAAQ=</HashCode>
+      <FileName>Models\ReceiveModels\NotificationModels\NotificationReceiveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ReceivedModels.UserModel.UserListReceiveModel">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAgAAACAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\ReceiveModels\UserModel\UserListReceiveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ReceivedModels.UserModel.UserReceiveModel">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAACIAAAAQAwAAAKEAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\ReceiveModels\UserModel\UserReceiveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.ChatModels.ChatResponseModel" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAIACAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResponseModels\ChatModels\ChatResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModel.ChatModels.ChatUserResponseModel">
+    <Position X="6.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\ResponseModels\ChatModels\ChatUserResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.FriendModels.FriendResponseModel">
+    <Position X="8" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResponseModels\FriendModels\FriendResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.MessageModels.MessageResponseModel" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAigAAAAAAAAAAAAAAAAAACAAAEAAABAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\ResponseModels\MessageModels\MessageResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.NotificationsModels.NotificationResponseModel" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACwAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\ResponseModels\NotificationsModels\NotificationResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.UserModel.UserPaginationResponseModel" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAABAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResponseModels\UserModel\UserPaginationResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.UserModel.UserResponseModel" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAAACIAAAAQAQAAAKEAAACAQAQAAAAAAA=</HashCode>
+      <FileName>Models\ResponseModels\UserModel\UserResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ResponseModels.ChatPaginationResponseModel" Collapsed="true">
+    <Position X="11" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\ResponseModels\ChatPaginationResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.TransmissionModels.ClientOperationMessage" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAAA=</HashCode>
+      <FileName>Models\TransmissionModels\ClientOperationMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.TransmissionModels.OperationResultInfo">
+    <Position X="9.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAFAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\TransmissionModels\OperationResultInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ViewModels.AllUsersView" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAAAAAEAAAAACAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\AllUsersView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ViewModels.ChatListViewModel" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACEAAAAAAAgAACEAAAEAQAAACAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\ChatListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ViewModels.FriendProfileView" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAAAAKAAAAEAQAAAKAAAAAAQAAIAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\FriendProfileView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.ViewModels.ViewMessages">
+    <Position X="4.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAEAAA=</HashCode>
+      <FileName>Models\ViewModels\ViewMessages.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Models.FileModel">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAQAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\FileModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Serializer.JsonBinarySerializer">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializer\JsonBinarySerializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Serializer.JsonStringSerializer">
+    <Position X="0.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializer\JsonStringSerializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.ClientServerService">
+    <Position X="2.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAAEAIAAAABACEABAAJBAQAAEIAAEAAAAAQAAABA=</HashCode>
+      <FileName>ClientServerService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.DataManager">
+    <Position X="4" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAFAAAAAAAABAAAAAAAAAAAACAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientToServerApi.Encoder">
+    <Position X="4" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAACAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Encoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ClientToServerApi.Models.Enums.Transmissions.ClientOperations">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAABEAAIAAAABAICAABACAAACYEAAAEAAAAACkAIA=</HashCode>
+      <FileName>Models\Enums\Transmissions\ClientOperations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ClientToServerApi.Models.Enums.Transmissions.ListenerType">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAEAAAAAAIAAEAAAAAIAAgAMACAAIAAAAAAAABAg=</HashCode>
+      <FileName>Models\Enums\Transmissions\ListenerType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ClientToServerApi.Models.Enums.Transmissions.OperationsResults">
+    <Position X="4.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\Transmissions\OperationsResults.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ClientToServerApi.Models.Enums.City">
+    <Position X="9.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAACAAAAAAAAAAAJAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\City.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ClientToServerApi.Models.Enums.Country">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\Enums\Country.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ClientToServerApi.Models.Enums.Gender">
+    <Position X="6.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\Enums\Gender.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="ClientToServerApi.Handler">
+    <Position X="4" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
