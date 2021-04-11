@@ -99,7 +99,6 @@ namespace ClientToServerApi
                 MessageBox.Show("Не удалось отправить запрос на сервер");
                 logger.Warn("Не удалось отправить запрос на сервере");
                 throw new Exception("Не удалось отправить запрос на сервер");
-                
             }
         }
 

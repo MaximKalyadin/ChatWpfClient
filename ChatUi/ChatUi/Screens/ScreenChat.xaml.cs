@@ -205,7 +205,8 @@ namespace ChatUi.Screens
                     {
                         Message = el.UserMassage,
                         MessageStatus = (el.UserId == _userReceiveModel.UserId) ? "Sent" : "Received",
-                        TimeStamp = el.Date.ToString()
+                        TimeStamp = el.Date.ToString(),
+                        NamePerson = chats.FirstOrDefault(ch => ch.Id == el.ChatId).ChatUsers.FirstOrDefault(c => c.Id == el.UserId).UserName ?? "Me"
                     });
                 }
             }

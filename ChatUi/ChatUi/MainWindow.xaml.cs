@@ -66,8 +66,6 @@ namespace ChatUi
             {
                 myProfile.ProfileImageSource = converter.ConvertByteToImage(userReceiveModel.File.BinaryForm);
             }
-
-            
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)

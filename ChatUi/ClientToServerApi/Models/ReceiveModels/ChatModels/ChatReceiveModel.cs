@@ -11,7 +11,6 @@ namespace ClientToServerApi.Models.ReceivedModels.ChatModels
 		public int CreatorId { get; set; }
 		public int CountUsers { get; set; }
 		public List<ChatUserReceiveModel> ChatUsers { get; set; }
-
 	}
 
 }

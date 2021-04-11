@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ChatUi.Screens;
+using ClientToServerApi;
 using ClientToServerApi.Models.ReceivedModels.UserModel;
 using ClientToServerApi.Models.ViewModels;
 
@@ -22,6 +23,7 @@ namespace ChatUi.Screens
     /// </summary>
     public partial class ScreenFriendProfile : UserControl
     {
+        static Converter converter = new Converter();
         public ScreenFriendProfile()
         {
             InitializeComponent();
@@ -44,6 +46,10 @@ namespace ChatUi.Screens
             if (profileView.UserName != null)
             {
                 FriendNickRun.Text = profileView.UserName;
+            }
+            if (profileView.File.BinaryForm != null)
+            {
+                ImageFriend.ProfileImageSource = converter.ConvertByteToImage(profileView.File.BinaryForm);
             }
             ImageFriend.IsOnline = (bool)profileView.IsOnline;
         }

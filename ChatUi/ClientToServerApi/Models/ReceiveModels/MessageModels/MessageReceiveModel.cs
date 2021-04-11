@@ -11,5 +11,4 @@ namespace ClientToServerApi.Models.ReceivedModels.MessageModels
 		public DateTime Date { get; set; }
 		public FileModel File { get; set; }
 	}
-
 }

@@ -19,6 +19,11 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="MessageStylePerson" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MessageStyle}">
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Height" Value="Auto"/>
@@ -80,21 +85,34 @@
                                         </DockPanel>
                                     </Grid>
                                 </Border>
-                                <TextBlock Text="{Binding TimeStamp}" >
-                                    <TextBlock.Style>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="HorizontalAlignment" Value="Left"/>
-                                            <Setter Property="VerticalAlignment" Value="Bottom"/>
-                                            <Setter Property="Foreground" Value="#B7B5B8"/>
-                                            <Setter Property="Margin" Value="20,0,20,0"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding MessageStatus}" Value="Sent">
-                                                    <Setter Property="HorizontalAlignment" Value="Right"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding NamePerson}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                                                <Setter Property="Foreground" Value="#B7B5B8"/>
+                                                <Setter Property="Margin" Value="20,0,20,0"/>
+                                                <Setter Property="FontSize" Value="15"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding TimeStamp}" >
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                                                <Setter Property="Foreground" Value="#B7B5B8"/>
+                                                <Setter Property="Margin" Value="20,0,20,0"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding MessageStatus}" Value="Sent">
+                                                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </StackPanel>
                             </Grid>
                         </Border>
                     </ControlTemplate>

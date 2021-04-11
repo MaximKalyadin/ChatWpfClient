@@ -9,5 +9,6 @@ namespace ClientToServerApi.Models.ViewModels
         public string MessageStatus { get; set; }
         public string TimeStamp { get; set; }
         public string Message { get; set; }
+        public string NamePerson { get; set; }
     }
 }

@@ -96,15 +96,38 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ChatUi.exe.config
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ChatUi.exe
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ChatUi.pdb
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ClientToServerApi.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\NLog.dll
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\PresentationFramework.Aero2.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Buffers.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Memory.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Json.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.ValueTuple.dll
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\ClientToServerApi.pdb
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\NLog.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Buffers.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Memory.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Json.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.ValueTuple.xml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csprojAssemblyReference.cache
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddUsersInChat.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteUsersinChat.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.g.cs
@@ -115,6 +138,7 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendP
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.g.cs
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\WindowCreateChat.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\App.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.cache
@@ -122,8 +146,11 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi_MarkupCompile.
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\App.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\AuthorizationWindow.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddFriend.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddUsersInChat.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\ChatList.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Conversation.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteUsersinChat.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\MenuListControl.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\Notifications.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\RoundProfileButton.baml
@@ -134,6 +161,7 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenFriendP
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenMyProfile.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenNotification.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Screens\ScreenSettings.baml
+C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\WindowCreateChat.baml
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.g.resources
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.Properties.Resources.resources
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.GenerateResource.cache
@@ -141,31 +169,3 @@ C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CoreCom
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.csproj.CopyComplete
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.exe
 C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\ChatUi.pdb
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.g.cs
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteFriend.baml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddUsersInChat.g.cs
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteUsersinChat.g.cs
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\WindowCreateChat.g.cs
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\AddUsersInChat.baml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\Custom Controls\DeleteUsersinChat.baml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\obj\Debug\WindowCreateChat.baml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Buffers.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Memory.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Json.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.ValueTuple.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Buffers.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Memory.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Text.Json.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\System.ValueTuple.xml
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\NLog.dll
-C:\Users\Максим\Desktop\Chat\ChatUi\ChatUi\bin\Debug\NLog.xml

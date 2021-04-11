@@ -23,7 +23,5 @@ namespace ChatUi.Custom_Controls
         {
             InitializeComponent();
         }
-
-
     }
 }

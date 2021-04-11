@@ -9,5 +9,4 @@ namespace ClientToServerApi.Models.ReceivedModels.ChatModels
 		public FileModel Picture { get; set; }
 		public bool IsOnline { get; set; }
 	}
-
 }

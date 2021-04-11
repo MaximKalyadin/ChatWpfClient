@@ -1,4 +1,5 @@
-﻿using ClientToServerApi.Models.ReceivedModels.UserModel;
+﻿using ClientToServerApi;
+using ClientToServerApi.Models.ReceivedModels.UserModel;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace ChatUi.Screens
     public partial class ScreenMyProfile : UserControl
     {
         private readonly Logger logger = LogManager.GetCurrentClassLogger();
+        static Converter converter = new Converter();
         public ScreenMyProfile()
         {
             InitializeComponent();
@@ -46,6 +48,10 @@ namespace ChatUi.Screens
                 if (model.UserName != null)
                 {
                     NickNameTextBlock.Text = model.UserName.ToString();
+                }
+                if (model.File.BinaryForm != null)
+                {
+                    MyProfileImageScreen.ProfileImageSource = converter.ConvertByteToImage(model.File.BinaryForm);
                 }
             }
             else

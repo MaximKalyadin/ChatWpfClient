@@ -18,7 +18,7 @@
             <Image Source="/assets/close.png" Height="20" Width="20"/>
         </Button>
         <StackPanel x:Name="Stackpanelfriend" Grid.Row="2" Orientation="Vertical" Margin="16,0.2,14.4,0" Visibility="Collapsed">
-            <Custom_Controls:RoundProfileButton x:Name="ImageFriend" Height="160" Width="160" StrokeBrush="WhiteSmoke"/>
+            <Custom_Controls:RoundProfileButton x:Name="ImageFriend" Height="160" Width="160" StrokeBrush="WhiteSmoke" Visibility="Visible"/>
             <TextBlock x:Name="FriendNameSurnameTextblock" Margin="0,18,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="20"/>
             <TextBlock x:Name="FriendCountryCityTextBlock" Margin="0,6,0,0" TextAlignment="Center" FontSize="17" Foreground="#b7B5B8"/>
             <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
